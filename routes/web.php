@@ -14,7 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+//后台
 Route::prefix('admin')->group(function () {
    Route::any('login','Admin\UserController@login'); //登录
+<<<<<<< HEAD
    Route::any('login_do','Admin\UserController@login_do'); //登录执行
+=======
+   Route::any('register','Admin\UserController@register');
+>>>>>>> e8d1c5a39bc1cebcecd7a5c4ff71a8ff24aab382
 });
+

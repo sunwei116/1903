@@ -13,8 +13,12 @@ class UserController extends Controller
     }
     public function login_do()
     {
-       $user_name = request()->input('user_name');
-       $password = request()->input('password');
+        $user_name = request()->input('user_name');
+        $password = request()->input('password');
+    }
 
+    public function register()
+    {
+        echo "111";
     }
 }
