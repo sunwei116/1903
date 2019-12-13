@@ -11,4 +11,9 @@ class UserController extends Controller
     {
         return view('admin.login');
     }
+
+    public function register()
+    {
+        echo "111";
+    }
 }
