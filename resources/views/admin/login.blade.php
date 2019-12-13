@@ -24,7 +24,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label login-form"><i class="iconfont">&#xe6b8;</i></label>
                 <div class="layui-input-inline login-inline">
-                  <input type="text" name="username" lay-verify="required" placeholder="请输入你的帐号" autocomplete="off" class="layui-input">
+                  <input type="text" name="user_name" lay-verify="required" placeholder="请输入你的帐号" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <label class="login-title" for="password">密码</label>
@@ -66,9 +66,18 @@
               var form = layui.form();
               //监听提交
               form.on('submit(login)', function(data){
-                layer.msg(JSON.stringify(data.field),function(){
-                    location.href='index.html'
-                });
+                // layer.msg(JSON.stringify(data.field),function(){
+                //     location.href='index.html'
+                // });
+                  $.ajax({
+                      url: "{{url('admin/login_do')}}",
+                      method: "POST",
+                      dataType: "JSON",
+                      data: data.field,
+                      success: function (res) {
+                          layer.msg(res,{icon:5});
+                      }
+                  });
                 return false;
               });
             });

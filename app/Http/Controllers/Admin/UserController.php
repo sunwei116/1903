@@ -11,4 +11,10 @@ class UserController extends Controller
     {
         return view('admin.login');
     }
+    public function login_do()
+    {
+       $user_name = request()->input('user_name');
+       $password = request()->input('password');
+
+    }
 }

@@ -16,4 +16,5 @@ Route::get('/', function () {
 });
 Route::prefix('admin')->group(function () {
    Route::any('login','Admin\UserController@login'); //登录
+   Route::any('login_do','Admin\UserController@login_do'); //登录执行
 });
