@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::prefix('admin')->group(function () {
+   Route::any('login','Admin\UserController@login'); //登录
+});
