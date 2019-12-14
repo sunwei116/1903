@@ -68,16 +68,23 @@
               form.on('submit(login)', function(data){
                 // layer.msg(JSON.stringify(data.field),function(){
                 //     location.href='index.html'
-                // });
+                // })
                   $.ajax({
                       url: "{{url('admin/login_do')}}",
                       method: "POST",
                       dataType: "JSON",
                       data: data.field,
                       success: function (res) {
-                          layer.msg(res,{icon:5});
+                          if (res.code == 2 && res.message == '登录成功'){
+                                layer.msg(res.message,{icon:5,time:2000},function () {
+                                  location.href='{{url("admin/index")}}';
+                              });
+                          }else{
+                              layer.msg(res.message,{icon:5,time:2000});
+                          }
                       }
                   });
+
                 return false;
               });
             });
@@ -86,13 +93,13 @@
     </script>
     <script>
     //百度统计可去掉
-    var _hmt = _hmt || [];
+    /*var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
       hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
       var s = document.getElementsByTagName("script")[0]; 
       s.parentNode.insertBefore(hm, s);
-    })();
+    })();*/
     </script>
 </body>
 </html>
