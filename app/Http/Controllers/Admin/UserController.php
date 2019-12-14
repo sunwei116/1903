@@ -36,15 +36,42 @@ class UserController extends Controller
         }
     }
 
-    public function register()
+    public function register(Request $request)
     {
-        echo "111";
+        if($request->isMethod('post'))
+        {
+            $info=$request->all();
+            if(!empty($info))
+            {
+                $res=User::insert($info);
+
+
+                if($res){
+                     $arr=[
+                         'error'=>1
+                     ];
+                     $re=json_encode($arr);
+
+                    return $re;
+                }else {
+                     $arr=[
+                       'error'=>2
+                     ];
+                     $re=json_encode($arr);
+                     return $re;
+                    }
+            }
+        }
+        return view('admin.register');
     }
+
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @content  后台首页
      */
+
+
     public function index()
     {
         return view('admin.index');

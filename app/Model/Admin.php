@@ -9,4 +9,10 @@ class Admin extends Model
     protected $table = 'admin';
 
 
+    //库名
+    protected $table="admin";
+    //是否更新时间戳 false
+    public $timestamps=false;
+    //主键
+    protected $primaryKey="admin_id";
 }

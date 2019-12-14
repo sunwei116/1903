@@ -18,8 +18,10 @@ Route::get('/', function () {
 Route::prefix('admin')->group(function () {
    Route::any('login','Admin\UserController@login'); //登录
    Route::any('login_do','Admin\UserController@login_do'); //登录执行
+   Route::any('register','Admin\UserController@register');
     Route::any('index','Admin\UserController@index'); //后台首页
     Route::any('category_add','Admin\UserController@category_add'); //添加分类
     Route::any('register','Admin\UserController@register');
+
 });
 
