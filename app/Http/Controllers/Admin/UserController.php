@@ -17,8 +17,17 @@ class UserController extends Controller
         $password = request()->input('password');
     }
 
-    public function register()
+    public function register(Request $request)
     {
-        echo "111";
+        if($request->isMethod('post'))
+        {
+            $info=$request->all();
+            if(!empty($info))
+            {
+                
+            }
+        }
+        return view('admin.register');
     }
+
 }

@@ -18,7 +18,7 @@
     <div class="login-logo"><h1>X-ADMIN V1.1</h1></div>
     <div class="login-box">
         <form class="layui-form layui-form-pane" action="">
-              
+
             <h3>登录你的帐号</h3>
             <label class="login-title" for="username">帐号</label>
             <div class="layui-form-item">
@@ -34,9 +34,9 @@
                   <input type="text" name="password" lay-verify="required" placeholder="请输入你的密码" autocomplete="off" class="layui-input">
                 </div>
             </div>
-            <div class="form-actions">
-                <button class="btn btn-warning pull-right" lay-submit lay-filter="login"  type="submit">登录</button> 
-                <div class="forgot"><a href="#" class="forgot">忘记帐号或者密码</a></div>     
+            <div class="form-actions" margin-top:30px;>
+                <button class="btn btn-warning pull-right" lay-submit lay-filter="login"  type="submit">登录</button>
+                <div class="forgot"><a href="{{url('admin/register')}}" class="forgot">没有账号？去注册</a></div>
             </div>
         </form>
     </div>
@@ -58,7 +58,7 @@
             </div>
         </div>
         <div class="bg-out"></div>
-        <div id="changer-set"><i class="iconfont">&#xe696;</i></div>   
+        <div id="changer-set"><i class="iconfont">&#xe696;</i></div>
     </div>
     <script>
         $(function  () {
@@ -82,7 +82,7 @@
               });
             });
         })
-        
+
     </script>
     <script>
     //百度统计可去掉
@@ -90,9 +90,12 @@
     (function() {
       var hm = document.createElement("script");
       hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
-      var s = document.getElementsByTagName("script")[0]; 
+      var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
     </script>
 </body>
 </html>
+<style>
+
+</style>
