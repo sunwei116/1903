@@ -98,7 +98,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="./category.html">
+                            <a href="{{url('admin/category_add')}}">
                                 <i class="iconfont">&#xe6a7;</i>
                                 分类添加
                             </a>
