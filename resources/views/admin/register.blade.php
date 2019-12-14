@@ -95,8 +95,14 @@
                     data:data,
                     dataType:'json',
                     url:'register',
-                    success:function(){
-
+                    success:function(res){
+                        if(res.error==1){
+                            alert("注册成功 即将跳转登录页面");
+                            window.location.href="{{url('admin/login')}}";
+                        }else{
+                            alert('页面错误');
+                            window.location.href="{{url('admin/register')}}";
+                        }
                     }
                 });
             });

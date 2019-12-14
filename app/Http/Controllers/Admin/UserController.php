@@ -34,17 +34,32 @@ class UserController extends Controller
             $info=$request->all();
             if(!empty($info))
             {
-                
+                $res=User::insert($info);
+
+
+                if($res){
+                     $arr=[
+                         'error'=>1
+                     ];
+                     $re=json_encode($arr);
+
+                    return $re;
+                }else {
+                     $arr=[
+                       'error'=>2
+                     ];
+                     $re=json_encode($arr);
+                     return $re;
+                    }
             }
         }
         return view('admin.register');
     }
 
-<<<<<<< HEAD
-=======
+
     public function index()
     {
         return view('admin.index');
     }
->>>>>>> 1d1e12179e4ef80a78ce3155a2819235f8c91c78
+
 }
