@@ -120,11 +120,11 @@ class UserController extends Controller
     public function category_del()
     {
         $category_id = \request()->input('category_id');
-        $data = Category::where(['category_id'=>$category_id])->delete();
-        if ($data){
-            echo json_encode(['message'=> '删除成功','code'=>2,'data'=>$data]);die;
+        $res = Category::where(['category_id'=>$category_id])->delete();
+        if ($res){
+            echo json_encode(['message'=> '删除成功','code'=>2,'data'=>$res]);die;
         }else{
-            echo json_encode(['message'=> '删除失败','code'=>1,'data'=>$data]);die;
+            echo json_encode(['message'=> '删除失败','code'=>1,'data'=>$res]);die;
         }
     }
 
@@ -146,7 +146,10 @@ class UserController extends Controller
 
     }
 
-
+    /**
+     * @param Request $request
+     * @centent  退出当前账号
+     */
     public function quit(Request $request)
     {
         // $dd=$request->session()->get('key');
@@ -160,4 +163,13 @@ class UserController extends Controller
 
 
 
+    public function admin_add()
+    {
+        return view('admin.admin_add');
+    }
+
+    public function role_add()
+    {
+        return view('admin.role_add');
+    }
 }

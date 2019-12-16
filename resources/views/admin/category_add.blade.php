@@ -20,7 +20,6 @@
 
             //监听提交
             form.on('submit(demo2)', function(data){
-                layer.msg(JSON.stringify(data.field));
                 $.ajax({
                     url: "{{url('admin/category_add_do')}}",
                     data: data.field,
