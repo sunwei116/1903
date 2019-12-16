@@ -25,11 +25,11 @@
                     data: data.field,
                     dataType: "JSON",
                     success: function (res) {
-
-                    }
+                  }
                 });
                 return false;
             });
+
 
         });
     </script>
