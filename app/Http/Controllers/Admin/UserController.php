@@ -153,4 +153,11 @@ class UserController extends Controller
         $dd=$request->session()->forget('admin');
         echo '<script>alert("退出成功 返回登陆页面");window.location.href="/admin/login";</script>';
     }
+
+
+    //--------------------------------------------------------------------------------------------------------------
+
+
+
+
 }

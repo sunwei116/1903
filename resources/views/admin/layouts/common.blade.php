@@ -105,6 +105,28 @@
                         </li>
                     </ul>
                 </li>
+
+                <li class="list" >
+                    <a href="javascript:;">
+                        <i class="iconfont">&#xe6a3;</i>
+                        商品管理
+                        <i class="iconfont nav_right">&#xe697;</i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="./category.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                商品列表
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{url('admin/goods_add')}}">
+                                <i class="iconfont">&#xe6a7;</i>
+                                商品添加
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="list" >
                     <a href="javascript:;">
                         <i class="iconfont">&#xe6a3;</i>
