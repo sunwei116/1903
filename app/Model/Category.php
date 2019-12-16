@@ -1,14 +1,16 @@
 <?php
 
+
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Admin extends Model
+class Category extends Model
 {
-    protected $table = 'admin';
+    protected $table = 'category';
+
     //是否更新时间戳 false
     public $timestamps=false;
     //主键
-    protected $primaryKey="admin_id";
+    protected $primaryKey="category_id";
 }

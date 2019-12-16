@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="{{asset('static/css/font.css')}}">
     <link rel="stylesheet" href="{{asset('static/css/xadmin.css')}}">
     <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.min.css">
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
+    <script type="text/javascript" src="{{asset('static/js/jquery.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('static/js/swiper.jquery.min.js')}}"></script>
     <script src="{{asset('static/lib/layui/layui.js')}}" charset="utf-8"></script>
     <script type="text/javascript" src="{{asset('static/js/xadmin.js')}}"></script>
     <link rel="shortcut icon" href="/js/page.css" type="image/x-icon" />
@@ -26,7 +26,7 @@
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
                 <dd><a href="">个人信息</a></dd>
                 <dd><a href="">切换帐号</a></dd>
-                <dd><a href="{{url('admin/login')}}">退出</a></dd>
+                <dd><a href="{{url('admin/quit')}}">退出</a></dd>
             </dl>
         </li>
         <li class="layui-nav-item"><a href="/">前台首页</a></li>
@@ -42,27 +42,33 @@
                 <li class="list" current>
                     <a href="./index.html">
                         <i class="iconfont">&#xe761;</i>
-                        欢迎页面
+                        前台页面
                         <i class="iconfont nav_right">&#xe697;</i>
                     </a>
                 </li>
                 <li class="list">
                     <a href="javascript:;">
                         <i class="iconfont">&#xe70b;</i>
-                        会员管理
+                        用户管理
                         <i class="iconfont nav_right">&#xe697;</i>
                     </a>
                     <ul class="sub-menu">
                         <li>
                             <a href="member-list.html">
                                 <i class="iconfont">&#xe6a7;</i>
-                                会员列表
+                                用户列表
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{url('admin/admin_add')}}">
+                                <i class="iconfont">&#xe6a7;</i>
+                                用户添加
                             </a>
                         </li>
                         <li>
                             <a href="member-del.html">
                                 <i class="iconfont">&#xe6a7;</i>
-                                会员删除
+                                用户删除
                             </a>
                         </li>
                         <li>
@@ -93,7 +99,7 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="./category.html">
+                            <a href="{{url('admin/category_list')}}">
                                 <i class="iconfont">&#xe6a7;</i>
                                 分类列表
                             </a>
@@ -102,6 +108,49 @@
                             <a href="{{url('admin/category_add')}}">
                                 <i class="iconfont">&#xe6a7;</i>
                                 分类添加
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="list" >
+                    <a href="javascript:;">
+                        <i class="iconfont">&#xe6a3;</i>
+                        商品管理
+                        <i class="iconfont nav_right">&#xe697;</i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="./category.html">
+                                <i class="iconfont">&#xe6a7;</i>
+                                商品列表
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{url('admin/goods_add')}}">
+                                <i class="iconfont">&#xe6a7;</i>
+                                商品添加
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="list" >
+                    <a href="javascript:;">
+                        <i class="iconfont">&#xe6a3;</i>
+                        角色管理
+                        <i class="iconfont nav_right">&#xe697;</i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="{{url('admin/category_list')}}">
+                                <i class="iconfont">&#xe6a7;</i>
+                                角色列表
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{url('admin/role_add')}}">
+                                <i class="iconfont">&#xe6a7;</i>
+                                角色添加
                             </a>
                         </li>
                     </ul>
@@ -152,7 +201,7 @@
                         <li>
                             <a href="./banner-list.html">
                                 <i class="iconfont">&#xe6a7;</i>
-                                轮播列表
+                                管理员列表
                             </a>
                         </li>
                     </ul>
@@ -205,7 +254,7 @@
         <div id="changer-set"><i class="iconfont">&#xe696;</i></div>
     </div>
     <!-- 背景切换结束 -->
-    <script>
+{{--    <script>
         //百度统计可去掉
         var _hmt = _hmt || [];
         (function() {
@@ -214,6 +263,6 @@
             var s = document.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(hm, s);
         })();
-    </script>
+    </script>--}}
 </body>
 </html>

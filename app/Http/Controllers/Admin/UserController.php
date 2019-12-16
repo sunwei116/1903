@@ -5,7 +5,12 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Admin;
+<<<<<<< HEAD
 use App\Model\Brand;
+=======
+use App\Model\Category;
+
+>>>>>>> 4d611c1aa6b53508cad0d82dd7b412739e0c4495
 class UserController extends Controller
 {
     /**
@@ -21,11 +26,12 @@ class UserController extends Controller
      * @return false|string
      * @content  登录执行
      */
-    public function login_do()
+    public function login_do(Request $request)
     {
         $admin_name = request()->input('admin_name');
         $password = request()->input('password');
         $data = Admin::where(['admin_name' => $admin_name])->first();
+        $admin_id=$data['admin_id'];
         if ($data == null){
             return json_encode(['message'=>'没有此用户','code'=>'1','data'=>null]);die;
         }
@@ -33,10 +39,11 @@ class UserController extends Controller
         if ($data == 'null'){
             return json_encode(['message'=>'密码错误','code'=>'1','data'=>null]);die;
         }else{
+            $rea=$request->session()->put('admin',$admin_id);
             return json_encode(['message'=>'登录成功','code'=>'2','data'=>' ']);die;
         }
     }
-
+    //注册
     public function register(Request $request)
     {
         if($request->isMethod('post'))
@@ -73,19 +80,25 @@ class UserController extends Controller
      */
 
 
+    //后台
     public function index()
     {
         return view('admin.index');
     }
 
+<<<<<<< HEAD
     /**
      * 分类
      * @return [type] [description]
      */
+=======
+
+>>>>>>> 4d611c1aa6b53508cad0d82dd7b412739e0c4495
     public function category_add()
     {
         return view('admin.category_add');
     }
+<<<<<<< HEAD
 
 
 
@@ -159,5 +172,91 @@ class UserController extends Controller
         }else{
             return json_encode(['ret'=>2,'res'=>'修改失败']);
         }
+=======
+    /**
+     * @ content  分类列表
+     */
+    public function category_add_do()
+    {
+        $category_name = request()->input();
+        if (!$category_name){
+            echo json_encode(['message'=>'请输入值','code'=>'1','data'=>null]);die;
+        }
+       $res = Category::insert($category_name);
+        if ($res){
+            echo json_encode(['message'=> '添加成功','code'=>2,'data'=>$res]);die;
+        }else{
+            echo json_encode(['message'=> '添加失败','code'=>1,'data'=>$res]);die;
+        }
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @centent   分类列表
+     */
+    public function category_list()
+    {
+        $data = Category::all()->toArray();
+        return view('admin.category_list',['data'=>$data]);
+    }
+
+    /**
+     * @centent 分类删除
+     */
+    public function category_del()
+    {
+        $category_id = \request()->input('category_id');
+        $res = Category::where(['category_id'=>$category_id])->delete();
+        if ($res){
+            echo json_encode(['message'=> '删除成功','code'=>2,'data'=>$res]);die;
+        }else{
+            echo json_encode(['message'=> '删除失败','code'=>1,'data'=>$res]);die;
+        }
+    }
+
+    /**
+     * @centent 分类修改
+     */
+    public function category_update()
+    {
+        $category_name = \request()->input('category_name');
+        $category_id = \request()->input('category_id');
+        $c = Category::find($category_id);
+        $c->category_name = $category_name;
+        $res = $c->save();
+        if ($res){
+            echo json_encode(['message'=> '修改成功','code'=>2,'data'=>$res]);die;
+        }else{
+            echo json_encode(['message'=> '修改失败','code'=>1,'data'=>$res]);die;
+        }
+
+    }
+
+    /**
+     * @param Request $request
+     * @centent  退出当前账号
+     */
+    public function quit(Request $request)
+    {
+        // $dd=$request->session()->get('key');
+        $dd=$request->session()->forget('admin');
+        echo '<script>alert("退出成功 返回登陆页面");window.location.href="/admin/login";</script>';
+    }
+
+
+    //--------------------------------------------------------------------------------------------------------------
+
+
+
+
+    public function admin_add()
+    {
+        return view('admin.admin_add');
+    }
+
+    public function role_add()
+    {
+        return view('admin.role_add');
+>>>>>>> 4d611c1aa6b53508cad0d82dd7b412739e0c4495
     }
 }
