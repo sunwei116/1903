@@ -22,7 +22,7 @@ Route::prefix('admin')->group(function () {
 
         Route::any('index','Admin\UserController@index'); //后台首页
         Route::any('category_add','Admin\UserController@category_add'); //添加分类
-        Route::any('register','Admin\UserController@register');
+
     });
 
 
