@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="{{asset('static/css/font.css')}}">
     <link rel="stylesheet" href="{{asset('static/css/xadmin.css')}}">
     <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.min.css">
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
+    <script type="text/javascript" src="{{asset('static/js/jquery.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('static/js/swiper.jquery.min.js')}}"></script>
     <script src="{{asset('static/lib/layui/layui.js')}}" charset="utf-8"></script>
     <script type="text/javascript" src="{{asset('static/js/xadmin.js')}}"></script>
 
@@ -92,7 +92,7 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="./category.html">
+                            <a href="{{url('admin/category_list')}}">
                                 <i class="iconfont">&#xe6a7;</i>
                                 分类列表
                             </a>
@@ -183,7 +183,7 @@
         <div id="changer-set"><i class="iconfont">&#xe696;</i></div>
     </div>
     <!-- 背景切换结束 -->
-    <script>
+{{--    <script>
         //百度统计可去掉
         var _hmt = _hmt || [];
         (function() {
@@ -192,6 +192,6 @@
             var s = document.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(hm, s);
         })();
-    </script>
+    </script>--}}
 </body>
 </html>

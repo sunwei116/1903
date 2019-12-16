@@ -8,7 +8,8 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <button class="layui-btn" lay-submit lay-filter="demo2" type="submit">添加</button>
+            <button 	class="layui-btn layui-btn-radius layui-btn-normal" lay-submit lay-filter="demo2" type="submit">添加</button>
+            <a href="{{url('admin/category_list')}}" class="layui-btn layui-btn-radius layui-btn-warm">分类列表</a>
         </div>
     </form>
 
@@ -24,8 +25,9 @@
                     url: "{{url('admin/category_add_do')}}",
                     data: data.field,
                     dataType: "JSON",
+                    method: "POST",
                     success: function (res) {
-
+                            layer.msg(res.message,{icon:5,time:2000});
                     }
                 });
                 return false;

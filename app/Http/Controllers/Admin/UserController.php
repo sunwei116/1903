@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Admin;
+use App\Model\Category;
+
 class UserController extends Controller
 {
     /**
@@ -81,4 +83,64 @@ class UserController extends Controller
     {
         return view('admin.category_add');
     }
+
+    /**
+     * @ content  分类列表
+     */
+    public function category_add_do()
+    {
+        $category_name = request()->input();
+        if (!$category_name){
+            echo json_encode(['message'=>'请输入值','code'=>'1','data'=>null]);die;
+        }
+       $res = Category::insert($category_name);
+        if ($res){
+            echo json_encode(['message'=> '添加成功','code'=>2,'data'=>$res]);die;
+        }else{
+            echo json_encode(['message'=> '添加失败','code'=>1,'data'=>$res]);die;
+        }
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @centent   分类列表
+     */
+    public function category_list()
+    {
+        $data = Category::all()->toArray();
+        return view('admin.category_list',['data'=>$data]);
+    }
+
+    /**
+     * @centent 分类删除
+     */
+    public function category_del()
+    {
+        $category_id = \request()->input('category_id');
+        $data = Category::where(['category_id'=>$category_id])->delete();
+        if ($data){
+            echo json_encode(['message'=> '删除成功','code'=>2,'data'=>$data]);die;
+        }else{
+            echo json_encode(['message'=> '删除失败','code'=>1,'data'=>$data]);die;
+        }
+    }
+
+    /**
+     * @centent 分类修改
+     */
+    public function category_update()
+    {
+        $category_name = \request()->input('category_name');
+        $category_id = \request()->input('category_id');
+        $c = Category::find($category_id);
+        $c->category_name = $category_name;
+        $res = $c->save();
+        if ($res){
+            echo json_encode(['message'=> '修改成功','code'=>2,'data'=>$res]);die;
+        }else{
+            echo json_encode(['message'=> '修改失败','code'=>1,'data'=>$res]);die;
+        }
+
+    }
+
 }
