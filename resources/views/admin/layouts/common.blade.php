@@ -25,7 +25,7 @@
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
                 <dd><a href="">个人信息</a></dd>
                 <dd><a href="">切换帐号</a></dd>
-                <dd><a href="{{url('admin/login')}}">退出</a></dd>
+                <dd><a href="{{url('admin/quit')}}">退出</a></dd>
             </dl>
         </li>
         <li class="layui-nav-item"><a href="/">前台首页</a></li>
@@ -41,27 +41,27 @@
                 <li class="list" current>
                     <a href="./index.html">
                         <i class="iconfont">&#xe761;</i>
-                        欢迎页面
+                        前台页面
                         <i class="iconfont nav_right">&#xe697;</i>
                     </a>
                 </li>
                 <li class="list">
                     <a href="javascript:;">
                         <i class="iconfont">&#xe70b;</i>
-                        会员管理
+                        用户管理
                         <i class="iconfont nav_right">&#xe697;</i>
                     </a>
                     <ul class="sub-menu">
                         <li>
                             <a href="member-list.html">
                                 <i class="iconfont">&#xe6a7;</i>
-                                会员列表
+                                用户列表
                             </a>
                         </li>
                         <li>
                             <a href="member-del.html">
                                 <i class="iconfont">&#xe6a7;</i>
-                                会员删除
+                                用户删除
                             </a>
                         </li>
                         <li>
@@ -130,7 +130,7 @@
                         <li>
                             <a href="./banner-list.html">
                                 <i class="iconfont">&#xe6a7;</i>
-                                轮播列表
+                                管理员列表
                             </a>
                         </li>
                     </ul>
