@@ -12,6 +12,7 @@
     <script type="text/javascript" src="{{asset('static/js/swiper.jquery.min.js')}}"></script>
     <script src="{{asset('static/lib/layui/layui.js')}}" charset="utf-8"></script>
     <script type="text/javascript" src="{{asset('static/js/xadmin.js')}}"></script>
+     {{--文件上传js --}}
     <link rel="shortcut icon" href="/js/page.css" type="image/x-icon" />
 
 </head>
@@ -54,7 +55,13 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="member-list.html">
+                            <a href="{{url('admin/admin_role')}}">
+                                <i class="iconfont">&#xe6a7;</i>
+                                用户角色管理
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{url('admin/admin_list')}}">
                                 <i class="iconfont">&#xe6a7;</i>
                                 用户列表
                             </a>
@@ -66,21 +73,15 @@
                             </a>
                         </li>
                         <li>
-                            <a href="member-del.html">
+                            <a href="{{url('admin/right')}}">
                                 <i class="iconfont">&#xe6a7;</i>
-                                用户删除
+                                权限管理
                             </a>
                         </li>
                         <li>
-                            <a href="member-level.html">
+                            <a href="{{url('admin/right_add')}}">
                                 <i class="iconfont">&#xe6a7;</i>
-                                等级管理
-                            </a>
-                        </li>
-                        <li>
-                            <a href="member-kiss.html">
-                                <i class="iconfont">&#xe6a7;</i>
-                                积分管理
+                                权限添加
                             </a>
                         </li>
                         <li>
@@ -121,7 +122,7 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="./category.html">
+                            <a href="{{url('admin/goods_list')}}">
                                 <i class="iconfont">&#xe6a7;</i>
                                 商品列表
                             </a>
@@ -142,7 +143,13 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="{{url('admin/category_list')}}">
+                            <a href="{{url('admin/role_right')}}">
+                                <i class="iconfont">&#xe6a7;</i>
+                                角色分配权限
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{url('admin/role_list')}}">
                                 <i class="iconfont">&#xe6a7;</i>
                                 角色列表
                             </a>

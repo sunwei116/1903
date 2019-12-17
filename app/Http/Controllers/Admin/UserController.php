@@ -9,6 +9,9 @@ use App\Model\Admin;
 use App\Model\Brand;
 
 use App\Model\Category;
+use App\Model\Role;     //角色
+use App\Model\Right;   //权限
+use App\Model\Admin_role;   //管理员分配角色
 
 
 class UserController extends Controller
@@ -92,7 +95,6 @@ class UserController extends Controller
      */
 
 
-
     public function category_add()
     {
         return view('admin.category_add');
@@ -164,12 +166,12 @@ class UserController extends Controller
         $brand_name = request()->input('brand_name');
         $brand_desc = request()->input('brand_desc');
         // dd($brand_desc);
-        $data = Brand::where(['brand_id'=>$brand_id])->update(['brand_name'=>$brand_name,'brand_desc'=>$brand_desc]);
+        $data = Brand::where(['brand_id' => $brand_id])->update(['brand_name' => $brand_name, 'brand_desc' => $brand_desc]);
         // dd($data);
-        if($data){
-            return json_encode(['ret'=>1,'res'=>'修改成功']);
-        }else{
-            return json_encode(['ret'=>2,'res'=>'修改失败']);
+        if ($data) {
+            return json_encode(['ret' => 1, 'res' => '修改成功']);
+        } else {
+            return json_encode(['ret' => 2, 'res' => '修改失败']);
         }
     }
 
@@ -246,16 +248,153 @@ class UserController extends Controller
 
     //--------------------------------------------------------------------------------------------------------------
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @centent  管理员分配角色
+     */
+    public function admin_role()
+    {
+        //查询所有用户
+        $admin = Admin::all()->toArray();
+        //查询所有角色
+        $role = Role::all()->toArray();
+        if (\request()->isMethod("post")) {
+            $admin_id = \request()->input('admin_id');
+            $role_id = \request()->input('arr');
+            $role_id = implode(",",$role_id);
+           $res = Admin_role::insert([
+                'admin_id' => $admin_id,
+                'role_id' => $role_id
+            ]);
+           dd($res);
+        }
+        return view('admin.admin_role',['admin'=>$admin,'role'=>$role]);
+    }
 
-
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @centent 管理员添加用户
+     */
 
     public function admin_add()
     {
+        if (\request()->isMethod('POST')){
+            $data = \request()->input();
+            $res = Admin::insert($data);
+            dd($res);
+
+        }
         return view('admin.admin_add');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @centent 管理员列表
+     */
+    public function admin_list()
+    {
+        $data = Admin::all()->toArray();
+        return view('admin.admin_list',['data'=>$data]);
+    }
+
+    /**
+     * @centent 修改超级管理员
+     */
+    public function is_admin_update()
+    {
+       $admin_id = \request()->input('admin_id');
+       $is_admin = \request()->input('is_admin') == '是' ? 2 : 1;
+       $data = Admin::find($admin_id);
+       $data->is_admin = $is_admin;
+       $res = $data->save();
+        if ($res){
+            echo json_encode(['message'=> '修改成功','code'=>2,'data'=>$res]);die;
+        }else{
+            echo json_encode(['message'=> '修改失败','code'=>1,'data'=>$res]);die;
+        }
+
+    }
+
+    /**
+     * @centent 管理员删除
+     */
+    public function admin_del()
+    {
+        $admin_id = \request()->input('admin_id');
+        $res = Admin::where(['admin_id'=>$admin_id])->delete();
+        if ($res){
+            echo json_encode(['message'=> '删除成功','code'=>2,'data'=>$res]);die;
+        }else{
+            echo json_encode(['message'=> '删除失败','code'=>1,'data'=>$res]);die;
+        }
+    }
+
+    public function role_right()
+    {
+        return view('amdin.role_right');
+    }
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @centent  角色添加
+     */
     public function role_add()
     {
+        if (\request()->isMethod('POST')){
+            $data = \request()->input();
+            $res = Role::insert($data);
+            if ($res){
+                echo json_encode(['message'=> '添加成功','code'=>2,'data'=>$res]);die;
+            }else{
+                echo json_encode(['message'=> '添加失败','code'=>1,'data'=>$res]);die;
+            }
+        }
         return view('admin.role_add');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @centent 角色列表
+     */
+    public function role_list()
+    {
+        $data = Role::all()->toArray();
+        return view('admin.role_list',['data'=>$data]);
+    }
+
+    /**
+     * @centent 角色删除
+     */
+    public function role_del()
+    {
+        $role_id = \request()->input('role_id');
+        $res = Role::where(['role_id'=>$role_id])->delete();
+        if ($res){
+            echo json_encode(['message'=> '删除成功','code'=>2,'data'=>$res]);die;
+        }else{
+            echo json_encode(['message'=> '删除失败','code'=>1,'data'=>$res]);die;
+        }
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @centent 权限添加
+     */
+    public function right_add()
+    {
+        if (\request()->isMethod('POST')){
+            $data = \request()->input();
+            $res = Right::insert($data);
+            if ($res){
+                echo json_encode(['message'=> '添加成功','code'=>2,'data'=>$res]);die;
+            }else{
+                echo json_encode(['message'=> '添加失败','code'=>1,'data'=>$res]);die;
+            }
+        }
+        return view('admin.right_add');
+    }
+
+    public function right()
+    {
+        return view('admin.right');
     }
 }

@@ -4,11 +4,11 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Goods extends Model
+class Admin_role extends Model
 {
-    protected $table = 'goods';
+    protected $table = 'admin_role';
     //是否更新时间戳 false
     public $timestamps=false;
     //主键
-    protected $primaryKey="goods_id";
+    protected $primaryKey="admin_id";
 }
