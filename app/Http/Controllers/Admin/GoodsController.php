@@ -66,6 +66,6 @@ class GoodsController extends Controller
     //商品轮播图
     public function images()
     {
-
+        
     }
 }
