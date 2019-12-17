@@ -48,7 +48,18 @@ Route::prefix('admin')->group(function () {
         Route::any('goods_del','Admin\GoodsController@goods_del');
         Route::any('images','Admin\GoodsController@images');
         Route::any('admin_add','Admin\UserController@admin_add'); //管理员添加
+        Route::any('admin_role','Admin\UserController@admin_role'); //管理员分配角色
+        Route::any('admin_add','Admin\UserController@admin_add'); //管理员添加用户
+        Route::any('admin_del','Admin\UserController@admin_del'); //管理员-用户 删除
+        Route::any('admin_list','Admin\UserController@admin_list'); //用户列表
+        Route::any('is_admin_update','Admin\UserController@is_admin_update'); //修改是为否管理员
+
+        Route::any('role_right','Admin\UserController@role_right'); //角色分配权限
         Route::any('role_add','Admin\UserController@role_add'); //角色添加
+        Route::any('role_list','Admin\UserController@role_list'); //角色列表
+        Route::any('role_del','Admin\UserController@role_del'); //角色删除
+        Route::any('right','Admin\UserController@right'); //权限管理
+        Route::any('right_add','Admin\UserController@right_add'); //权限添加
     });
 
 
