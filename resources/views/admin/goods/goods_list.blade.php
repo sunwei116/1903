@@ -22,6 +22,7 @@
                 <td>{{$v->goods_id}}</td>
                 <td class="update">{{$v->goods_name}}</td>
                 <td><img src="{{$v->goods_img}}" width="160px" height="130px"></td>
+
                 <td>
                     <a href="javascript:;" class="del" goods_id="{{$v->goods_id}}">删除</a>
                 </td>
@@ -34,7 +35,7 @@
             $('.del').click(function(){
                 var _this=$(this);
                 var goods_id=$(".del").attr("goods_id");
-                console.log(goods_id);
+
 
                 $.ajax({
                     type:'post',
