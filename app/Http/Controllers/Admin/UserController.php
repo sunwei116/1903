@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Admin;
-<<<<<<< HEAD
+
 use App\Model\Brand;
-=======
+
 use App\Model\Category;
 
->>>>>>> 4d611c1aa6b53508cad0d82dd7b412739e0c4495
+
 class UserController extends Controller
 {
     /**
@@ -86,19 +86,18 @@ class UserController extends Controller
         return view('admin.index');
     }
 
-<<<<<<< HEAD
     /**
      * 分类
      * @return [type] [description]
      */
-=======
 
->>>>>>> 4d611c1aa6b53508cad0d82dd7b412739e0c4495
+
+
     public function category_add()
     {
         return view('admin.category_add');
     }
-<<<<<<< HEAD
+
 
 
 
@@ -172,7 +171,8 @@ class UserController extends Controller
         }else{
             return json_encode(['ret'=>2,'res'=>'修改失败']);
         }
-=======
+    }
+
     /**
      * @ content  分类列表
      */
@@ -257,6 +257,5 @@ class UserController extends Controller
     public function role_add()
     {
         return view('admin.role_add');
->>>>>>> 4d611c1aa6b53508cad0d82dd7b412739e0c4495
     }
 }
