@@ -12,6 +12,7 @@
     <script type="text/javascript" src="{{asset('static/js/swiper.jquery.min.js')}}"></script>
     <script src="{{asset('static/lib/layui/layui.js')}}" charset="utf-8"></script>
     <script type="text/javascript" src="{{asset('static/js/xadmin.js')}}"></script>
+     {{--文件上传js --}}
 
 </head>
 <body>
@@ -114,7 +115,7 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="./category.html">
+                            <a href="{{url('admin/goods_list')}}">
                                 <i class="iconfont">&#xe6a7;</i>
                                 商品列表
                             </a>

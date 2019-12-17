@@ -30,6 +30,11 @@ Route::prefix('admin')->group(function () {
         Route::any('category_del','Admin\UserController@category_del'); //分类删除
         Route::any('category_update','Admin\UserController@category_update'); //分类修改
         Route::any('goods_add','Admin\GoodsController@goods_add');
+        Route::any('up','Admin\GoodsController@up');
+        Route::any('img_add','Admin\GoodsController@img_add');
+        Route::any('goods_list','Admin\GoodsController@goods_list');
+        Route::any('goods_del','Admin\GoodsController@goods_del');
+        Route::any('images','Admin\GoodsController@images');
     });
 
 
