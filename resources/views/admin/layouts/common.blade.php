@@ -72,12 +72,7 @@
                                 用户添加
                             </a>
                         </li>
-                        <li>
-                            <a href="{{url('admin/right')}}">
-                                <i class="iconfont">&#xe6a7;</i>
-                                权限管理
-                            </a>
-                        </li>
+
                         <li>
                             <a href="{{url('admin/right_add')}}">
                                 <i class="iconfont">&#xe6a7;</i>
@@ -194,6 +189,12 @@
                             <a href="./banner-list.html">
                                 <i class="iconfont">&#xe6a7;</i>
                                 轮播列表
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{url('admin/images')}}">
+                                <i class="iconfont">&#xe6a7;</i>
+                                轮播图添加
                             </a>
                         </li>
                     </ul>
