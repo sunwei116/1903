@@ -8,6 +8,7 @@ use App\Model\Admin;
 use App\Model\Brand;
 use App\Model\Category;
 use App\Model\Role;     //角色
+use App\Model\Role_right;     //角色分配权限
 use App\Model\Right;   //权限
 use App\Model\Admin_role;   //管理员分配角色
 
@@ -256,11 +257,26 @@ class UserController extends Controller
             $admin_id = \request()->input('admin_id');
             $role_id = \request()->input('arr');
             $role_id = implode(",",$role_id);
-           $res = Admin_role::insert([
-                'admin_id' => $admin_id,
-                'role_id' => $role_id
-            ]);
-           dd($res);
+            $userInfo = Admin_role::find($admin_id);
+            if ($userInfo) {
+                $userInfo->role_id = $role_id;
+                $res = $userInfo->save();
+                if ($res){
+                    echo json_encode(['message'=> '修改成功','code'=>2,'data'=>$res]);die;
+                }else{
+                    echo json_encode(['message'=> '修改失败','code'=>1,'data'=>$res]);die;
+                }
+            }else{
+                $res = Admin_role::insert([
+                    'admin_id' => $admin_id,
+                    'role_id' => $role_id
+                ]);
+                if ($res){
+                    echo json_encode(['message'=> '添加成功','code'=>2,'data'=>$res]);die;
+                }else{
+                    echo json_encode(['message'=> '添加失败','code'=>1,'data'=>$res]);die;
+                }
+            }
         }
         return view('admin.admin_role',['admin'=>$admin,'role'=>$role]);
     }
@@ -275,7 +291,11 @@ class UserController extends Controller
         if (\request()->isMethod('POST')){
             $data = \request()->input();
             $res = Admin::insert($data);
-            dd($res);
+            if ($res){
+                echo json_encode(['message'=> '添加成功','code'=>2,'data'=>$res]);die;
+            }else{
+                echo json_encode(['message'=> '添加失败','code'=>1,'data'=>$res]);die;
+            }
 
         }
         return view('admin.admin_add');
@@ -323,9 +343,40 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @centent 角色分匹配权限
+     */
     public function role_right()
     {
-        return view('amdin.role_right');
+        $role = Role::all()->toArray();
+        $right = Right::all()->toArray();
+        if (\request()->isMethod("post")) {
+            $role_id = \request()->input('role_id');
+            $right_id = \request()->input('right_id');
+            $role_right = Role_right::find($role_id);
+            if (!$role_right){
+                $res = Role_right::insert([
+                    'role_id' => $role_id,
+                    'right_id' => $right_id
+                ]);
+                if ($res){
+                    echo json_encode(['message'=> '添加成功','code'=>2,'data'=>$res]);die;
+                }else{
+                    echo json_encode(['message'=> '添加失败','code'=>1,'data'=>$res]);die;
+                }
+            }else{
+                $role_right->right_id = $right_id;
+                $res = $role_right->save();
+                if ($res){
+                    echo json_encode(['message'=> '修改成功','code'=>2,'data'=>$res]);die;
+                }else{
+                    echo json_encode(['message'=> '修改失败','code'=>1,'data'=>$res]);die;
+                }
+            }
+
+        }
+        return view('admin.role_right',['role'=>$role,'right'=>$right]);
     }
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -389,6 +440,8 @@ class UserController extends Controller
 
     public function right()
     {
+        $data = \DB::select("SELECT * FROM admin AS a LEFT JOIN admin_role a_role ON a.admin_id=a_role.admin_id WHERE a.role_id IN('SELECT role_id FROM role_right')");
+        dd($data);
         return view('admin.right');
     }
 }
