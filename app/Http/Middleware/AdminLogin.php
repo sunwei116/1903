@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Model\Admin_role;
+use App\Model\Admin;
 
 class AdminLogin
 {
@@ -18,6 +20,10 @@ class AdminLogin
         if(empty(session('admin'))){
             echo '<script>alert("请先登陆");window.location.href="/admin/login";</script>';exit;
         }
+        $admin_id = session('admin');
+        $admin = Admin::find($admin_id)->toArray();
         return $next($request);
+
+
     }
 }
