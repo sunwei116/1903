@@ -16,6 +16,18 @@ Route::get('/', function () {
 });
 //后台
 Route::prefix('admin')->group(function () {
+   Route::any('login','Admin\UserController@login'); //登录
+   Route::any('login_do','Admin\UserController@login_do'); //登录执行
+   Route::any('register','Admin\UserController@register');
+    Route::any('index','Admin\UserController@index'); //后台首页
+    Route::any('category_add','Admin\UserController@category_add'); //添加分类
+    Route::any('register','Admin\UserController@register');
+    Route::any('brand_add','Admin\UserController@brand_add');
+    Route::any('brand_add_do','Admin\UserController@brand_add_do');
+    Route::any('brand_list','Admin\UserController@brand_list');
+    Route::any('brand_del','Admin\UserController@brand_del');
+    Route::any('brand_upd','Admin\UserController@brand_upd');
+    Route::any('brand_upd_do','Admin\UserController@brand_upd_do');
 
 
     //防止用户非法登陆；
@@ -35,6 +47,8 @@ Route::prefix('admin')->group(function () {
         Route::any('goods_list','Admin\GoodsController@goods_list');
         Route::any('goods_del','Admin\GoodsController@goods_del');
         Route::any('images','Admin\GoodsController@images');
+        Route::any('admin_add','Admin\UserController@admin_add'); //管理员添加
+        Route::any('role_add','Admin\UserController@role_add'); //角色添加
     });
 
 

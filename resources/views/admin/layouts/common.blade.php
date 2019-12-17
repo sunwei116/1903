@@ -13,6 +13,7 @@
     <script src="{{asset('static/lib/layui/layui.js')}}" charset="utf-8"></script>
     <script type="text/javascript" src="{{asset('static/js/xadmin.js')}}"></script>
      {{--文件上传js --}}
+    <link rel="shortcut icon" href="/js/page.css" type="image/x-icon" />
 
 </head>
 <body>
@@ -57,6 +58,12 @@
                             <a href="member-list.html">
                                 <i class="iconfont">&#xe6a7;</i>
                                 用户列表
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{url('admin/admin_add')}}">
+                                <i class="iconfont">&#xe6a7;</i>
+                                用户添加
                             </a>
                         </li>
                         <li>
@@ -131,6 +138,48 @@
                 <li class="list" >
                     <a href="javascript:;">
                         <i class="iconfont">&#xe6a3;</i>
+                        角色管理
+                        <i class="iconfont nav_right">&#xe697;</i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="{{url('admin/category_list')}}">
+                                <i class="iconfont">&#xe6a7;</i>
+                                角色列表
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{url('admin/role_add')}}">
+                                <i class="iconfont">&#xe6a7;</i>
+                                角色添加
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="list" >
+                    <a href="javascript:;">
+                        <i class="iconfont">&#xe6a3;</i>
+                        品牌管理
+                        <i class="iconfont nav_right">&#xe697;</i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="{{url('admin/brand_list')}}">
+                                <i class="iconfont">&#xe6a7;</i>
+                                品牌列表
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{url('admin/brand_add')}}">
+                                <i class="iconfont">&#xe6a7;</i>
+                                品牌添加
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="list" >
+                    <a href="javascript:;">
+                        <i class="iconfont">&#xe6a3;</i>
                         轮播管理
                         <i class="iconfont nav_right">&#xe697;</i>
                     </a>
@@ -180,9 +229,9 @@
     <!-- 左侧菜单结束 -->
         @yield('content')
 <!-- 底部开始 -->
-{{--<div class="footer">--}}
+<!-- {{--<div class="footer">--}}
 {{--    <div class="copyright">Copyright ©2017 x-admin v2.3 All Rights Reserved. 本后台系统由X前端框架提供前端技术支持</div>--}}
-{{--</div>--}}
+{{--</div>--}} -->
 <!-- 底部结束 -->
     <!-- 背景切换开始 -->
     <div class="bg-changer">
