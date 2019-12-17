@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Goods;
 use App\Model\Category;
+use App\Model\Images;
 use Illuminate\Support\Facades\Storage;
+
 
 class GoodsController extends Controller
 {
@@ -64,8 +66,45 @@ class GoodsController extends Controller
     }
 
     //商品轮播图
-    public function images()
+    public function images_add(Request $request)
     {
-
+        $obj=$request->file('Filedata');
+        $ext= $obj->getClientOriginalExtension();//获取扩展名;
+        $path= $obj->getRealPath(); //获取路径
+        $filename=date('Y-m-d-H-i-s',time()).'.'.$ext;
+        Storage::disk('public')->put($filename,file_get_contents($path));
+        $newPath="/images/$filename";
+        echo $newPath;
     }
+
+    public function images(Request $request)
+    {
+        $data=Goods::get();
+
+        if($request->isMethod('post'))
+        {
+
+            $result=$request->all();
+            $res=Images::insert($result);
+            if($res)
+            {
+                $arr=[
+                    'error'=>1,
+                    'data'=>'添加成功'
+                     ];
+               return json_encode($arr);
+            }else
+                {
+                $arr=[
+                  'error'=>2,
+                  'data'=>'添加失败'
+                ];
+                return json_encode($arr);
+                }
+        }
+        return view('admin.goods.images_add',compact('data'));
+    }
+
+
+        
 }

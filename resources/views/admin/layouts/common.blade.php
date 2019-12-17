@@ -196,6 +196,12 @@
                                 轮播列表
                             </a>
                         </li>
+                        <li>
+                            <a href="{{url('admin/images')}}">
+                                <i class="iconfont">&#xe6a7;</i>
+                                轮播图添加
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="list" >
