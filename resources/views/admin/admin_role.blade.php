@@ -46,7 +46,7 @@
                     dataType: "JSON",
                     data: {admin_id:admin_id,arr},
                     success: function (res) {
-
+                        layer.msg(res.message,{icon:1,time:2000});
                     }
                 });
                 return false;

@@ -438,10 +438,4 @@ class UserController extends Controller
         return view('admin.right_add');
     }
 
-    public function right()
-    {
-        $data = \DB::select("SELECT * FROM admin AS a LEFT JOIN admin_role a_role ON a.admin_id=a_role.admin_id WHERE a.role_id IN('SELECT role_id FROM role_right')");
-        dd($data);
-        return view('admin.right');
-    }
 }
