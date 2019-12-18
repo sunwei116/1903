@@ -14,7 +14,7 @@ class IndexController extends Controller
     public function login(Request $request)
     {
 
-        $re=$request->all();
+         $re=$request->all();
         $info=User::where(['user_name'=>$re['user_name']])->first();
         if($info==null)
         {
