@@ -40,8 +40,8 @@ class User extends Model
     //注册
     public static function register($user_name, $user_pwd, $user_phone)
     {
-        if (!empty($user_name) && !empty($user_pwd) && !empty($phone)) {
-            $data = self::where(['user_name'=>$user_name])->where('phone',$phone)->first();
+        if (!empty($user_name) && !empty($user_pwd) && !empty($user_phone)) {
+            $data = self::where(['user_name'=>$user_name])->where('phone',$user_phone)->first();
             if ($data) {
                 $res = self::insert([
                     'user_name' => $user_name,
@@ -49,12 +49,12 @@ class User extends Model
                     'user_phone' => $user_phone
                 ]);
                 if ($res) {
-                    echo json_encode(['msg' => '注册成功', 'data' => $res, 'code' => 1]);exit;
+                    return json_encode(['msg' => '注册成功', 'data' => $res, 'code' => 1]);exit;
                 } else {
-                    echo json_encode(['msg' => '注册失败', 'data' => $res, 'code' => 2]);exit;
+                    return json_encode(['msg' => '注册失败', 'data' => $res, 'code' => 2]);exit;
                 }
             }else{
-                echo json_encode(['msg' => '用户名或手机号已被注册', 'data' => null, 'code' => 2]);exit;
+                return json_encode(['msg' => '用户名或手机号已被注册', 'data' => null, 'code' => 2]);exit;
             }
         }
     }

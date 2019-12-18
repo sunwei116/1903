@@ -36,11 +36,11 @@ class IndexController extends Controller
         header('Access-Control-Allow-Credentials:false');
         //数据类型
         header('content-type:application:json;charset=utf8');
-        
+
         $user_name = isset($_POST['user_name']) ? $_POST['user_name'] : '';
         $user_pwd = isset($_POST['user_pwd']) ? $_POST['user_pwd'] : '';
         $user_phone = isset($_POST['user_phone']) ? $_POST['user_phone'] : '';
-        User::register($user_name, $user_pwd, $user_phone);
+        return User::register($user_name, $user_pwd, $user_phone);
     }
 
 
