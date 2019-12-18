@@ -53,14 +53,6 @@ Route::prefix('admin')->group(function () {
         Route::any('brand_del','Admin\UserController@brand_del');//品牌
         Route::any('brand_upd','Admin\UserController@brand_upd');//品牌
         Route::any('brand_upd_do','Admin\UserController@brand_upd_do');//品牌
-    });
-
-        Route::any('brand_add','Admin\UserController@brand_add');
-	    Route::any('brand_add_do','Admin\UserController@brand_add_do');
-	    Route::any('brand_list','Admin\UserController@brand_list');
-	    Route::any('brand_del','Admin\UserController@brand_del');
-	    Route::any('brand_upd','Admin\UserController@brand_upd');
-	    Route::any('brand_upd_do','Admin\UserController@brand_upd_do');
 
     });
 
@@ -71,3 +63,7 @@ Route::prefix('admin')->group(function () {
   Route::any('admin/login','Admin\UserController@login'); //登录
   Route::any('admin/quit','Admin\UserController@quit');  //退出当前账号
 
+//前台
+Route::prefix('index')->group(function () {
+    Route::any('register','Index\UserController@brand_upd_do');//品牌
+});
