@@ -43,6 +43,8 @@ class User extends Model
         if (!empty($user_name) && !empty($user_pwd) && !empty($user_phone)) {
             $data = self::where(['user_name'=>$user_name])->where('user_phone',$user_phone)->first();
             if ($data) {
+                return json_encode(['msg' => '用户名或手机号已被注册', 'data' => null, 'code' => 2]);exit;
+            }else{
                 $res = self::insert([
                     'user_name' => $user_name,
                     'user_pwd' => $user_pwd,
@@ -53,8 +55,6 @@ class User extends Model
                 } else {
                     return json_encode(['msg' => '注册失败', 'data' => $res, 'code' => 2]);exit;
                 }
-            }else{
-                return json_encode(['msg' => '用户名或手机号已被注册', 'data' => null, 'code' => 2]);exit;
             }
         }
     }
