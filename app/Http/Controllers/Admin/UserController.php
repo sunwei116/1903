@@ -5,12 +5,15 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Admin;
+
 use App\Model\Brand;
+
 use App\Model\Category;
 use App\Model\Role;     //角色
 use App\Model\Role_right;     //角色分配权限
 use App\Model\Right;   //权限
 use App\Model\Admin_role;   //管理员分配角色
+
 
 class UserController extends Controller
 {
@@ -92,10 +95,12 @@ class UserController extends Controller
      * @return [type] [description]
      */
 
+
     public function category_add()
     {
         return view('admin.category_add');
     }
+
 
 
 
@@ -170,6 +175,7 @@ class UserController extends Controller
             return json_encode(['ret' => 2, 'res' => '修改失败']);
         }
     }
+
     /**
      * @ content  分类列表
      */
