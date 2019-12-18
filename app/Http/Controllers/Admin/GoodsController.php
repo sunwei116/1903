@@ -41,7 +41,12 @@ class GoodsController extends Controller
         $arr=$request->all();
         //dd($arr);
         $re=Goods::insert($arr);
-        dd($re);
+        // dd($re);
+        if($re){
+            return json_encode(['ret'=>1,'res'=>'添加成功']);
+        }else{
+            return json_encode(['ret'=>2,'res'=>'添加失败']);
+        }
     }
 
     public function goods_list()

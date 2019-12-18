@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\IndexModel\User;
 use App\Model\Goods;
+use App\Model\Category;
 
 class IndexController extends Controller
 {
@@ -40,5 +41,6 @@ class IndexController extends Controller
         $data = Goods::getGoods();
 
     }
+
 
 }

@@ -63,5 +63,14 @@ Route::prefix('admin')->group(function () {
 
 //前台
 Route::prefix('index')->group(function () {
-    Route::any('getGoods','Index\IndexController@getGoods');//获取所有商品
+    
+   
+Route::middleware(['apiheader'])->group(function(){
+	 Route::any('cate','Index\UserController@cate');//分类展示
+	 Route::any('getGoods','Index\IndexController@getGoods');//获取所有商品
 });
+   
+});
+
+
+

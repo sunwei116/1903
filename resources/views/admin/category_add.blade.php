@@ -8,7 +8,8 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <button 	class="layui-btn layui-btn-radius layui-btn-normal" lay-submit lay-filter="demo2" type="submit">添加</button>
+            <!-- <button 	class="layui-btn layui-btn-radius layui-btn-normal" lay-submit lay-filter="demo2" type="submit">添加</button> -->
+            <input class="layui-btn layui-btn-radius layui-btn-normal" lay-submit lay-filter="demo2" type="button" value="添加">
             <a href="{{url('admin/category_list')}}" class="layui-btn layui-btn-radius layui-btn-warm">分类列表</a>
         </div>
     </form>
@@ -26,11 +27,13 @@
                     dataType: "JSON",
                     method: "POST",
                     success: function (res) {
+
                         layer.msg(res.message,{icon:5,time:2000});
                     }
                 });
-                return false;
             });
+
         });
+        
     </script>
 @endsection
