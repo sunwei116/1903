@@ -71,6 +71,7 @@ Route::middleware(['apiheader'])->group(function(){
 	 Route::any('getGoods','Index\IndexController@getGoods');//获取所有商品
      Route::any('login', 'Index\IndexController@login');  //
 });
+    Route::any('register', 'Index\IndexController@register');  //
 
 });
 

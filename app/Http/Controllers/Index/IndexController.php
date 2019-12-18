@@ -27,7 +27,8 @@ class IndexController extends Controller
      */
     public function register()
     {
-        $user_name = isset($_POST['user_name']) ? $_POST['name'] : '';
+        $user_name = isset($_POST['user_name']) ? $_POST['user_name'] : '';
+        dd($user_name);
         $user_pwd = isset($_POST['user_pwd']) ? $_POST['user_pwd'] : '';
         $user_phone = isset($_POST['user_phone']) ? $_POST['user_phone'] : '';
         User::register($user_name, $user_pwd, $user_phone);
