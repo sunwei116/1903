@@ -37,8 +37,7 @@ class IndexController extends Controller
         //数据类型
         header('content-type:application:json;charset=utf8');
         $user_name = isset($_POST['user_name']) ? $_POST['user_name'] : '';
-        var_dump($user_name);
-        dd(\request()->input());
+        dd($user_name);
         $user_pwd = isset($_POST['user_pwd']) ? $_POST['user_pwd'] : '';
         $user_phone = isset($_POST['user_phone']) ? $_POST['user_phone'] : '';
         User::register($user_name, $user_pwd, $user_phone);
