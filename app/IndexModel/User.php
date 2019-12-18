@@ -41,7 +41,7 @@ class User extends Model
     public static function register($user_name, $user_pwd, $user_phone)
     {
         if (!empty($user_name) && !empty($user_pwd) && !empty($user_phone)) {
-            $data = self::where(['user_name'=>$user_name])->where('phone',$user_phone)->first();
+            $data = self::where(['user_name'=>$user_name])->where('user_phone',$user_phone)->first();
             if ($data) {
                 $res = self::insert([
                     'user_name' => $user_name,
