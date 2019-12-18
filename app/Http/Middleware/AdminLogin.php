@@ -40,9 +40,8 @@ class AdminLogin
             }
         }
 
-       // dd($admin);
+        $admin=Admin::join('admin_role','admin.admin_id','=','admin_role.admin_id')->where(['admin.admin_id'=>$admin])->first();
+        $Role=Role_right::where('role_id','=',$admin['role_id'])->get()->toArray();
         return $next($request);
-
-
     }
 }
