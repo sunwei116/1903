@@ -72,7 +72,12 @@
                                 用户添加
                             </a>
                         </li>
-
+                        <li>
+                            <a href="{{url('admin/right')}}">
+                                <i class="iconfont">&#xe6a7;</i>
+                                权限管理
+                            </a>
+                        </li>
                         <li>
                             <a href="{{url('admin/right_add')}}">
                                 <i class="iconfont">&#xe6a7;</i>

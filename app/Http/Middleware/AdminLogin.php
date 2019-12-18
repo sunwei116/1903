@@ -21,13 +21,25 @@ class AdminLogin
         if(empty(session('admin'))){
             echo '<script>alert("请先登陆");window.location.href="/admin/login";</script>';exit;
         }
+        //获取管理员id
         $admin_id = session('admin');
         $admin = Admin::find($admin_id)->toArray();
-//        dd($admin_id);
-        $admin=Admin::join('admin_role','admin.admin_id','=','admin_role.admin_id')->where(['admin.admin_id'=>$admin])->first();
-        dd($admin);
-        $Role=Role_right::where('role_id','=',$admin['role_id'])->get()->toArray();
-        dd($Role);
+        if ($admin['is_admin'] != 1) {
+            //        dd($admin_id);
+            $admin=Admin::join('admin_role','admin.admin_id','=','admin_role.admin_id')->where(['admin.admin_id'=>$admin_id])->first();
+
+            $role_right=Role_right::where('role_id','=',$admin['role_id'])->get();
+            foreach ($role_right as $k => $v) {
+                $http = $request->server('HTTP_HOST');
+                $url = $request->server('REQUEST_URI');
+                $header = 'http://'.$http.$url;
+                $right = Right::where(['right_id'=>$v['right_id']])->where(['url'=>$url])->first();
+                if (empty($data)) {
+                    echo "<script>alert('你的权限不够！联系管理员');location.href='/admin/login';</script>";
+                }
+            }
+        }
+
        // dd($admin);
         return $next($request);
 

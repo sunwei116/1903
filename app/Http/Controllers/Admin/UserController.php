@@ -438,4 +438,21 @@ class UserController extends Controller
         return view('admin.right_add');
     }
 
+    public function right()
+    {
+        $admin_role = \DB::select("SELECT * FROM admin LEFT JOIN admin_role ON admin.admin_id=admin_role.admin_id");
+        $admin_role = (json_decode(json_encode($admin_role),1));
+        $role = Role::all()->toArray();
+        $arr=[];
+        foreach ($admin_role as $key => $value) {
+            foreach ($role as $k => $v) {
+                if ($v['role_id']== $value['role_id']){
+                    $arr[] = array_merge($v,$value);
+
+                }
+             }
+        }
+
+        return view('admin.right');
+    }
 }

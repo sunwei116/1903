@@ -45,11 +45,7 @@
                 dataType: "JSON",
                 data: {role_id:role_id,right_id:right_id},
                 success: function (res) {
-                    if (res.message == "添加成功"){
-                        layer.msg(res.message,{icon:5,time:2000})
-                    } else{
-                        layer.msg(res.message,{icon:6,time:2000})
-                    }
+                        layer.msg(res.message,{icon:1,time:2000})
                 }
             });
             return false;

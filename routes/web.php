@@ -17,8 +17,6 @@ Route::get('/', function () {
 //后台
 Route::prefix('admin')->group(function () {
 
-
-
     //防止用户非法登陆；
     Route::group(['middleware'=>'admin'],function (){
 
