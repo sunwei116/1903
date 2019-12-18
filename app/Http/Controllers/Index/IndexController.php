@@ -13,6 +13,7 @@ class IndexController extends Controller
     //前台登录
     public function login(Request $request)
     {
+
         $re=$request->all();
         $info=User::where(['user_name'=>$re['user_name']])->first();
         if($info==null)
