@@ -10,37 +10,49 @@ use App\Model\Category;
 
 class IndexController extends Controller
 {
-    //用户注册
-    public function register()
+    //前台登录
+    public function login(Request $request)
     {
-        $user_name = \request()->input('user_name');
-        $user_pwd = \request()->input('user_pwd');
-        $user_sex = \request()->input('user_sex');
-        $user_age = \request()->input('user_age');
-        $user_phone = \request()->input('user_phone');
-        if ($user_name && $user_age && $user_pwd && $user_sex && $user_phone) {
-            $res = User::insert([
-                        'user_name'=>$user_name,
-                        'user_pwd'=>$user_pwd,
-                        'user_sex'=>$user_sex,
-                        'user_age'=>$user_age,
-                        'user_phone'=>$user_phone
-                    ]);
-            if ( $res ) {
-                echo json_encode(['msg'=>'注册成功','data'=>$res,'code'=>1]);die;
-            }else{
-                echo json_encode(['msg'=>'注册失败','data'=>$res,'code'=>2]);die;
-            }
+
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE");
+        header('Access-Control-Allow-Headers:x-requested-with,content-type');
+
+        $re=$request->all();
+        $info=User::where(['user_name'=>$re['user_name']])->first();
+        if($info==null)
+        {
+            $arr=[
+                'error'=>2,
+                'msg'=>'用户不存在',
+                'data'=>null
+            ];
+
+            $array=json_encode($arr);
+            return $array;
+        }
+
+        $data=User::where(['user_name'=>$re['user_name'],'user_pwd'=>$re['user_pwd']])->first();
+
+        if($data=='null')
+        {
+            $arr=[
+                'error'=>2,
+                'msg'=>'用户名或密码错误',
+                'data'=>null
+            ];
+
+            $array=json_encode($arr);
+            return $array;
         }else{
-            echo json_encode(['msg'=>'参数不正确','data'=>null,'code'=>2]);die;
+            $arr=[
+                'error'=>1,
+                'msg'=>'登录成功',
+                'data'=>null
+            ];
+            $array=json_encode($arr);
+            return $array;
         }
     }
-    //获取商品
-    public function getGoods()
-    {
-        $data = Goods::getGoods();
-
-    }
-
 
 }

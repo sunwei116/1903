@@ -27,7 +27,10 @@
                     dataType: "JSON",
                     method: "POST",
                     success: function (res) {
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
                         layer.msg(res.message,{icon:5,time:2000});
                     }
                 });

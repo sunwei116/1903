@@ -54,22 +54,24 @@ Route::prefix('admin')->group(function () {
         Route::any('brand_upd','Admin\UserController@brand_upd');//品牌
         Route::any('brand_upd_do','Admin\UserController@brand_upd_do');//品牌
    });
-});
- //退出  登陆
-  Route::any('admin/login_do','Admin\UserController@login_do'); //登录执行
-  Route::any('admin/register','Admin\UserController@register'); //注册
-  Route::any('admin/login','Admin\UserController@login'); //登录
-  Route::any('admin/quit','Admin\UserController@quit');  //退出当前账号
 
+     //退出  登陆
+      Route::any('admin/login_do','Admin\UserController@login_do'); //登录执行
+      Route::any('admin/register','Admin\UserController@register'); //注册
+      Route::any('admin/login','Admin\UserController@login'); //登录
+      Route::any('admin/quit','Admin\UserController@quit');  //退出当前账号
+        });
+
+//------------------------------------------------------------------------------------------*-----------------------------**//
 //前台
 Route::prefix('index')->group(function () {
-    
-   
+
 Route::middleware(['apiheader'])->group(function(){
 	 Route::any('cate','Index\UserController@cate');//分类展示
 	 Route::any('getGoods','Index\IndexController@getGoods');//获取所有商品
+     Route::any('login', 'Index\IndexController@login');  //
 });
-   
+
 });
 
 
