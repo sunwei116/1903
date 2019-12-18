@@ -63,5 +63,5 @@ Route::prefix('admin')->group(function () {
 
 //前台
 Route::prefix('index')->group(function () {
-    Route::any('register','Index\UserController@brand_upd_do');//品牌
+    Route::any('getGoods','Index\IndexController@getGoods');//获取所有商品
 });

@@ -11,4 +11,10 @@ class Goods extends Model
     public $timestamps=false;
     //主键
     protected $primaryKey="goods_id";
+
+    public static function getGoods()
+    {
+        $data = self::all()->toArray();
+        return $data;
+    }
 }

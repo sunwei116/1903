@@ -26,17 +26,11 @@
                     dataType: "JSON",
                     method: "POST",
                     success: function (res) {
-<<<<<<< HEAD
-                  }
-=======
-                            layer.msg(res.message,{icon:5,time:2000});
+                        layer.msg(res.message,{icon:5,time:2000});
                     }
->>>>>>> 4d611c1aa6b53508cad0d82dd7b412739e0c4495
                 });
                 return false;
             });
-
-
         });
     </script>
 @endsection
