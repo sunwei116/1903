@@ -33,6 +33,8 @@ class IndexController extends Controller
         User::register($user_name, $user_pwd, $user_phone);
     }
 
+
+
     /**
      *
      */
@@ -40,4 +42,8 @@ class IndexController extends Controller
     {
         $data = \request()->input();
     }
+
+
+
+
 }

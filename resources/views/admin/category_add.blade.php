@@ -27,10 +27,10 @@
                     dataType: "JSON",
                     method: "POST",
                     success: function (res) {
-
                         layer.msg(res.message,{icon:5,time:2000});
                     }
                 });
+                return false;
             });
 
         });
