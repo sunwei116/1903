@@ -97,5 +97,18 @@ class User extends Model
         }
     }
 
+    public static function header()
+    {
+        header('Access-Control-Allow-Origin:*');
+        // 响应类型
+        header('Access-Control-Allow-Methods:*');
+        //请求头
+        header('Access-Control-Allow-Headers:*');
+        // 响应头设置
+        header('Access-Control-Allow-Credentials:false');
+        //数据类型
+        header('content-type:application:json;charset=utf8');
+    }
+
 
 }
