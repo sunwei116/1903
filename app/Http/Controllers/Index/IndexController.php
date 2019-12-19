@@ -17,7 +17,6 @@ class IndexController extends Controller
         if(empty($_POST['user_name']) || empty($_POST['user_pwd'])) {
             echo json_encode(['code' => 2, 'msg' => '请输入账号和密码', 'data' => null]);exit;
         }
-
         $user_name=$_POST['user_name'];
         $user_pwd=$_POST['user_pwd'];
         return User::login($user_name,$user_pwd);
@@ -43,6 +42,15 @@ class IndexController extends Controller
     public function goods_desc()
     {
         $data = \request()->input();
+    }
+
+    /**
+     * @centent 获取所有商品
+     */
+    public function get_goods_all()
+    {
+       $data = Goods::get_Goods_all();
+       echo json_encode(['code'=>1,'msg'=>'请求成功','data'=>$data]);
     }
 
 

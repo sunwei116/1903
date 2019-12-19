@@ -12,7 +12,7 @@ class Goods extends Model
     //主键
     protected $primaryKey="goods_id";
 
-    public static function getGoods()
+    public static function get_Goods_all()
     {
         $data = self::all()->toArray();
         return $data;
