@@ -143,7 +143,7 @@
                             success:function(res){
                                 if(res.ret==1){
                                     alert(res.res);
-                                    location.href="http://www.app.com/admin/goods_list";
+                                    location.href="{{url('admin/goods_list')}}";
                                 }else{
                                     alert(res.res);
                                 }
