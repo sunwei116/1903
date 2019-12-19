@@ -71,11 +71,11 @@ Route::prefix('index')->group(function () {
 Route::middleware(['apiheader'])->group(function(){
 	 Route::any('cate','Index\UserController@cate');//分类展示
 	 Route::any('getGoods','Index\IndexController@getGoods');//获取所有商品
-     Route::any('login', 'Index\IndexController@login');  //
      Route::any('goods_list', 'Index\GoodsController@goods_show');  //
 
 });
-    Route::any('register', 'Index\IndexController@register');  //
+    Route::any('register', 'Index\IndexController@register');  //注册
+    Route::any('login', 'Index\IndexController@login');  // 登录
 
 });
 

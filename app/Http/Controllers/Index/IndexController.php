@@ -15,7 +15,6 @@ class IndexController extends Controller
     {
         if(empty($_POST['user_name']) || empty($_POST['user_pwd'])) {
             echo json_encode(['code' => 2, 'msg' => '请输入账号和密码', 'data' => null]);exit;
-
         }
 
         $user_name=$_POST['user_name'];
