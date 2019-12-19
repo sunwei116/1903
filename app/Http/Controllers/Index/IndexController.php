@@ -17,8 +17,9 @@ class IndexController extends Controller
             echo json_encode(['code' => 2, 'msg' => '请输入账号和密码', 'data' => null]);exit;
 
         }
+
         $user_name=$_POST['user_name'];
-        $user_pwd=$_POST['user_pwd'];;
+        $user_pwd=$_POST['user_pwd'];
         return User::login($user_name,$user_pwd);
     }
 

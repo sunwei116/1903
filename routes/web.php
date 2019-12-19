@@ -35,6 +35,7 @@ Route::prefix('admin')->group(function () {
         Route::any('goods_del','Admin\GoodsController@goods_del');//
         Route::any('images','Admin\GoodsController@images');//轮播图添加 uploadify
         Route::any('images_add','Admin\GoodsController@images_add');//轮播图
+        Route::any('images_show','Admin\GoodsController@images_show');//轮播图
         Route::any('admin_add','Admin\UserController@admin_add'); //管理员添加
         Route::any('admin_role','Admin\UserController@admin_role'); //管理员分配角色
         Route::any('admin_add','Admin\UserController@admin_add'); //管理员添加用户
@@ -55,7 +56,7 @@ Route::prefix('admin')->group(function () {
         Route::any('brand_upd_do','Admin\UserController@brand_upd_do');//品牌
    });
 });
-  
+
      //退出  登陆
       Route::any('admin/login_do','Admin\UserController@login_do'); //登录执行
       Route::any('admin/register','Admin\UserController@register'); //注册

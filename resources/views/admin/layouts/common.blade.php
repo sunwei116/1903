@@ -191,7 +191,7 @@
                     </a>
                     <ul class="sub-menu" style="display:none">
                         <li>
-                            <a href="./banner-list.html">
+                            <a href="{{url('admin/images_show')}}">
                                 <i class="iconfont">&#xe6a7;</i>
                                 轮播列表
                             </a>

@@ -64,11 +64,23 @@
             </div>
         </div>
 
-        <div class="layui-input-inline">
+       商品分类 <div class="layui-input-inline">
             <select name="category_id">
                 <option value="">请选择</option>
                 @foreach($data as $v)
                 <option value="{{$v->category_id}}">{{$v->category_name}}</option>
+                @endforeach
+            </select>
+        </div>
+        &nbsp;
+        <br>
+        &nbsp;
+        <br>
+       商品品牌 <div class="layui-input-inline">
+            <select name="brand_id">
+                <option value="">请选择</option>
+                @foreach($brand as $v)
+                    <option value="{{$v->brand_id}}">{{$v->brand_name}}</option>
                 @endforeach
             </select>
         </div>
@@ -106,7 +118,9 @@
                         data.is_host =$("input[name='is_host']:checked").val();
                         data.is_new =$("input[name='is_new']:checked").val();
                         data.category_id=$("select[name='category_id']").val();
-                        data.goods_desc=$("textarea[name='goods_desc']").val();
+
+                       data.goods_desc=$("textarea[name='goods_desc']").val();
+                        data.brand_id=$("select[name='brand_id']").val();
 
 
                         // data={};
