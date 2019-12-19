@@ -45,14 +45,31 @@ class IndexController extends Controller
     }
 
 
+    /**
+     * @centent 获取所有商品
+     */
+    public function get_goods_all()
+    {
+       $data = Goods::get_Goods_all();
+       echo json_encode(['code'=>1,'msg'=>'请求成功','data'=>$data]);
+    }
 
     /**
-     *
+     * @centent 商品详情
      */
     public function goods_desc()
     {
-        $data = \request()->input();
+        User::header();
+        //接受商品id
+        $goods_id = \request()->input('goods_id');
+        if (!isset($goods_id)){
+            Goods::json_error(2,'请选择商品');
+        }
+        $data = Goods::goods_desc($goods_id);
+        Goods::json_success(1,'操作成功',$data);
     }
+
+
 
 
 
