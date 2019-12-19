@@ -31,6 +31,7 @@ class ApiHeader
         //  header("content-type:text/html;charset=utf-8");  //设置编码
 //        $token = $request->input('token');
 //        User::checkToken($token);
+//        dd($token);
         // //获取客户端ip
         // $url='http://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"];
         // $ip = $_SERVER["REMOTE_ADDR"];

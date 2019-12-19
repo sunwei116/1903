@@ -41,7 +41,7 @@ class GoodsController extends Controller
     {
         $arr=$request->all();
         //dd($arr);
-       
+
         $re=Goods::insert($arr);
 
         if($re){
@@ -114,7 +114,7 @@ class GoodsController extends Controller
 
     public  function images_show()
     {
-        $data=Images::join('goods','img.goods_id','=','goods.goods_id')->paginate(5);
+        $data=Images::join('goods','img.goods_id','=','goods.goods_id')->paginate(4);
         //dd($data);
         return view('admin.goods.images_show',compact('data'));
     }

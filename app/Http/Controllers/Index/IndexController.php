@@ -13,10 +13,11 @@ class IndexController extends Controller
     //前台登录
     public function login(Request $request)
     {
-        User::header();
         if(empty($_POST['user_name']) || empty($_POST['user_pwd'])) {
             echo json_encode(['code' => 2, 'msg' => '请输入账号和密码', 'data' => null]);exit;
+
         }
+
         $user_name=$_POST['user_name'];
         $user_pwd=$_POST['user_pwd'];
         return User::login($user_name,$user_pwd);
@@ -27,7 +28,16 @@ class IndexController extends Controller
      */
     public function register()
     {
-        User::header();
+        header('Access-Control-Allow-Origin:*');
+        // 响应类型
+        header('Access-Control-Allow-Methods:*');
+        //请求头
+        header('Access-Control-Allow-Headers:*');
+        // 响应头设置
+        header('Access-Control-Allow-Credentials:false');
+        //数据类型
+        header('content-type:application:json;charset=utf8');
+
         $user_name = isset($_POST['user_name']) ? $_POST['user_name'] : '';
         $user_pwd = isset($_POST['user_pwd']) ? $_POST['user_pwd'] : '';
         $user_phone = isset($_POST['user_phone']) ? $_POST['user_phone'] : '';
@@ -43,16 +53,6 @@ class IndexController extends Controller
     {
         $data = \request()->input();
     }
-
-    /**
-     * @centent 获取所有商品
-     */
-    public function get_goods_all()
-    {
-       $data = Goods::get_Goods_all();
-       echo json_encode(['code'=>1,'msg'=>'请求成功','data'=>$data]);
-    }
-
 
 
 
