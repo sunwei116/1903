@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Index;
 
+use App\Model\Images;
+use DemeterChain\C;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\IndexModel\User;
@@ -80,6 +82,27 @@ class IndexController extends Controller
 //        dd($data);
 //       Goods::json_success(1,'操作成功',$data);
     }
+
+    /**
+     * @centent 首页分类展示
+     */
+    public  function category()
+    {
+        $cateInfo=Category::get();
+        Goods::json_success(1,'操作成功',$cateInfo);
+
+    }
+
+    public function category_goods_list(Request $request)
+    {
+
+         $id=$request->get('category_id');
+         $data=Goods::where('category_id',$id)->get();
+         Goods::json_success('1','调用接口成功',$data);
+    }
+
+
+
 
 
 

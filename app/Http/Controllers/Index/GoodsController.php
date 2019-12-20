@@ -21,4 +21,6 @@ class GoodsController extends Controller
           echo json_encode(['code' => 1, 'msg' => '调用成功', 'data' => $data]);
       }
 
+
+
 }

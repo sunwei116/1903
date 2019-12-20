@@ -73,6 +73,7 @@ Route::middleware(['apiheader'])->group(function(){
 	 Route::any('cate','Index\UserController@cate');//分类展示
 	 Route::any('get_goods_all','Index\IndexController@get_goods_all');//获取所有商品
 	 Route::any('getGoods','Index\IndexController@getGoods');   //获取所有商品
+	 Route::any('getGoods','Index\IndexController@getGoods');//获取所有商品
      Route::any('goods_show', 'Index\GoodsController@goods_show');  // 商品接口
      Route::any('images_api', 'Index\GoodsController@images_api');  // 轮播图接口
      Route::any('goods_desc', 'Index\IndexController@goods_desc');  //  商品详情
@@ -80,8 +81,11 @@ Route::middleware(['apiheader'])->group(function(){
      Route::any('get_goods_attr', 'Index\IndexController@get_goods_attr');  //  商品属性
 
      Route::any('login', 'Index\IndexController@login');  //
-     Route::any('goods_show', 'Index\GoodsController@goods_show');  // 商品接口
+     Route::any('goods_show', 'Index\GoodsController@goods_show');   // 商品接口
      Route::any('images_api', 'Index\GoodsController@images_api');  // 轮播图接口
+     Route::any('category', 'Index\IndexController@category');   // 分类接口
+     Route::any('category_goods_list', 'Index\IndexController@category_goods_list');   // 分类下面所有的商品
+
 });
     Route::any('register', 'Index\IndexController@register');  //注册
     Route::any('login', 'Index\IndexController@login');  // 登录
