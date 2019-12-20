@@ -86,6 +86,7 @@ Route::middleware(['apiheader'])->group(function(){
      Route::any('category', 'Index\IndexController@category');   // 分类接口
      Route::any('category_goods_list', 'Index\IndexController@category_goods_list');   // 分类下面所有的商品
 
+
 });
     Route::any('register', 'Index\IndexController@register');  //注册
     Route::any('login', 'Index\IndexController@login');  // 登录
