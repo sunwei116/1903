@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\IndexModel\User;
 use App\Model\Goods;
 use App\Model\Category;
+use App\Model\Attr;
 
 class IndexController extends Controller
 {
@@ -67,6 +68,17 @@ class IndexController extends Controller
         }
         $data = Goods::goods_desc($goods_id);
         Goods::json_success(1,'操作成功',$data);
+    }
+
+    public function get_goods_attr()
+    {
+        $goods_id = \request()->input('goods_id');
+        if (empty($goods_id)) {
+            Goods::json_error(2,'请选择商品');
+        }
+       Attr::get_goods_attr($goods_id);
+//        dd($data);
+//       Goods::json_success(1,'操作成功',$data);
     }
 
 

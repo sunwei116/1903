@@ -64,6 +64,7 @@ Route::prefix('admin')->group(function () {
       Route::any('admin/quit','Admin\UserController@quit');  //退出当前账号
 
 
+
 //------------------------------------------------------------------------------------------*-----------------------------**//
 //前台
 Route::prefix('index')->group(function () {
@@ -77,6 +78,7 @@ Route::middleware(['apiheader'])->group(function(){
      Route::any('images_api', 'Index\GoodsController@images_api');  // 轮播图接口
      Route::any('goods_desc', 'Index\IndexController@goods_desc');  //  商品详情
      Route::any('get_goods_imgs', 'Index\IndexController@get_goods_imgs');  //  商品轮播图
+     Route::any('get_goods_attr', 'Index\IndexController@get_goods_attr');  //  商品属性
 
 =======
      Route::any('login', 'Index\IndexController@login');  //
