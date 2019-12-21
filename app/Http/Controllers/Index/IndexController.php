@@ -96,6 +96,7 @@ class IndexController extends Controller
     {
 
          $id=$request->get('category_id');
+
          $data=Goods::where('category_id',$id)->get();
          Goods::json_success('1','调用接口成功',$data);
     }

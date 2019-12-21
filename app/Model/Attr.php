@@ -38,6 +38,7 @@ class Attr extends Model
 //    exit;
 //        echo json_encode($result);
         return $result;
+       // $as=json_encode($result);
 
     }
 }
