@@ -24,14 +24,20 @@ class Attr extends Model
 
         $result = array();
         foreach ($data as $key => $val) {
+            $tmp = array();
             $attr_id = $val['attr_id'];
+            $attr_name = $val['attr_name'];
             $attr_val = AttrVal::where('attr_id',$attr_id)->get()->toArray();
             if(!empty($attr_val)){
-                array_push($result,$attr_val);
+                 $tmp['attr_name']=$attr_name;
+                 $tmp['data']=$attr_val;
+                array_push($result,$tmp);
             }
         }
-
-        dd($result);
+//    print_r($result);
+//    exit;
+//        echo json_encode($result);
+        return $result;
 
     }
 }

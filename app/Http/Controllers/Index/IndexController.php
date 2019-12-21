@@ -78,9 +78,8 @@ class IndexController extends Controller
         if (empty($goods_id)) {
             Goods::json_error(2,'请选择商品');
         }
-       Attr::get_goods_attr($goods_id);
-//        dd($data);
-//       Goods::json_success(1,'操作成功',$data);
+      $data = Attr::get_goods_attr($goods_id);
+       Goods::json_success(1,'操作成功',$data);
     }
 
     /**
