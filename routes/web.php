@@ -35,11 +35,8 @@ Route::prefix('admin')->group(function () {
         Route::any('goods_del','Admin\GoodsController@goods_del');//
         Route::any('images','Admin\GoodsController@images');//轮播图添加 uploadify
         Route::any('images_add','Admin\GoodsController@images_add');//轮播图
-<<<<<<< Updated upstream
         Route::any('images_show','Admin\GoodsController@images_show');//轮播图
-=======
         Route::any('images_list','Admin\GoodsController@images_list');//轮播图列表
->>>>>>> Stashed changes
         Route::any('admin_add','Admin\UserController@admin_add'); //管理员添加
         Route::any('admin_role','Admin\UserController@admin_role'); //管理员分配角色
         Route::any('admin_add','Admin\UserController@admin_add'); //管理员添加用户
@@ -78,7 +75,6 @@ Route::middleware(['apiheader'])->group(function(){
 	 Route::any('get_goods_all','Index\IndexController@get_goods_all');//获取所有商品
 	 Route::any('getGoods','Index\IndexController@getGoods');   //获取所有商品
 	 Route::any('getGoods','Index\IndexController@getGoods');//获取所有商品
-<<<<<<< Updated upstream
      Route::any('goods_show', 'Index\GoodsController@goods_show');  // 商品接口
      Route::any('images_api', 'Index\GoodsController@images_api');  // 轮播图接口
      Route::any('goods_desc', 'Index\IndexController@goods_desc');  //  商品详情
@@ -91,12 +87,10 @@ Route::middleware(['apiheader'])->group(function(){
      Route::any('category', 'Index\IndexController@category');   // 分类接口
      Route::any('category_goods_list', 'Index\IndexController@category_goods_list');   // 分类下面所有的商品
 
-=======
 	 Route::any('getregion','Index\UserController@getregion');//四级联动
 	 Route::any('getregion_do','Index\UserController@getregion_do');//四级联动
 	 Route::any('region_do','Index\UserController@region_do');//四级联动
 	 Route::any('region_list','Index\UserController@region_list');//四级联动
->>>>>>> Stashed changes
 
 });
     Route::any('register', 'Index\IndexController@register');  //注册
