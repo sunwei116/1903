@@ -53,7 +53,8 @@ class IndexController extends Controller
      */
     public function get_goods_all()
     {
-       $data = Goods::get_Goods_all();
+        User::header();
+        $data = Goods::get_Goods_all();
        echo json_encode(['code'=>1,'msg'=>'请求成功','data'=>$data]);
     }
 
@@ -74,12 +75,13 @@ class IndexController extends Controller
 
     public function get_goods_attr()
     {
+        User::header();
         $goods_id = \request()->input('goods_id');
         if (empty($goods_id)) {
             Goods::json_error(2,'请选择商品');
         }
-      $data = Attr::get_goods_attr($goods_id);
-       Goods::json_success(1,'操作成功',$data);
+        $data = Attr::get_goods_attr($goods_id);
+        Goods::json_success(1,'操作成功',$data);
     }
 
     /**
@@ -99,7 +101,17 @@ class IndexController extends Controller
          $data=Goods::where('category_id',$id)->get();
          Goods::json_success('1','调用接口成功',$data);
     }
+    //加入购物车
+    public function add_car()
+    {
+        $goods_id = $_POST['goods_id'];
+        $goods_img = $_POST['goods_img'];
+        $goods_num = $_POST['goods_num'];
+        $goods_guige = $_POST['goods_guige'];
+        $token = $_POST['token'];
+        dd(\request()->input());
 
+    }
 
 
 

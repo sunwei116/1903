@@ -73,7 +73,7 @@ class User extends Model
         }
         $tokenCheck = self::checkToken($token);
         if ($tokenCheck != 0001) {
-            echo json_encode(['code' => 2, 'msg' => 'token验证失败', 'data' => null]);exit;
+            echo json_encode(['code' => 2, 'msg' => 'token验证失败,请重新登录', 'data' => null]);exit;
         }
         return true;
 
