@@ -76,12 +76,8 @@ class GoodsController extends Controller
                             }
                       }
               }
-          }
-          $token=$request->get('token');
-
-
+            }
+    
       }
-
-
 
 }

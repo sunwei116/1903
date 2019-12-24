@@ -78,7 +78,7 @@ class GoodsController extends Controller
         $obj=$request->file('Filedata');
         $ext= $obj->getClientOriginalExtension();//获取扩展名;
         $path= $obj->getRealPath(); //获取路径
-        dd($path);
+        // dd($path);
         $filename=date('Y-m-d-H-i-s',time()).'.'.$ext;
         Storage::disk('public')->put($filename,file_get_contents($path));
         $newPath="/uploads/$filename";
@@ -93,6 +93,7 @@ class GoodsController extends Controller
         {
 
             $result=$request->all();
+            // dd($result);
             $res=Images::insert($result);
             if($res)
             {
