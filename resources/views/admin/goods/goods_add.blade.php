@@ -110,7 +110,7 @@
                     $(document).on('click','.layui-btn',function () {
                         var data={};
                         data.goods_name=$("input[name='goods_name']").val();
-                        data.goods_img=$("input[name='goods_img']").text();
+                        data.goods_img=$("input[name='goods_img']").val();
                         data.market_price=$("input[name='market_price']").val();
                         data.goods_stock=$("input[name='goods_stock']").val();
                         data.is_sale= $("input[name='is_sale']:checked").val();
