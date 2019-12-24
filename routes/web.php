@@ -55,7 +55,7 @@ Route::prefix('admin')->group(function () {
         Route::any('brand_del','Admin\UserController@brand_del');//品牌
         Route::any('brand_upd','Admin\UserController@brand_upd');//品牌
         Route::any('brand_upd_do','Admin\UserController@brand_upd_do');//品牌
-   }); 
+   });
 });
 
      //退出  登陆
@@ -72,8 +72,9 @@ Route::prefix('index')->group(function () {
 
 Route::middleware(['apiheader'])->group(function(){
 
-
+    Route::any('cart_add', 'Index\GoodsController@cart_add');//加入购物车
 });
+
     Route::any('register', 'Index\IndexController@register');  //注册
     Route::any('login', 'Index\IndexController@login');  // 登录
     Route::any('cate','Index\UserController@cate');//分类展示
