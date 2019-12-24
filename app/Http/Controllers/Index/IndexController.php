@@ -10,6 +10,7 @@ use App\IndexModel\User;
 use App\Model\Goods;
 use App\Model\Category;
 use App\Model\Attr;
+use App\IndexModel\Car;
 
 class IndexController extends Controller
 {
@@ -96,7 +97,24 @@ class IndexController extends Controller
          $data=Goods::where('category_id',$id)->get();
          Goods::json_success('1','调用接口成功',$data);
     }
+    //加入购物车
+    public function add_car()
+    {
+        User::header();
+        $goods_id = $_POST['goods_id'];
+        $goods_name = $_POST['goods_name'];
+        $market_price = $_POST['market_price'];
+//        $goods_guige = $_POST['goods_guige'];
+        $token = $_POST['token'];
+        if (empty($token)) {
+            Goods::json_error(2,'token不存在，请先存在');
+        }
 
+        Car::insert([
+            'goods_id'=>$goods_id,
+            'goods_name'=>$goods_name,
+            'market_price'=>$market_price
+        ]);
 
 
 
