@@ -71,7 +71,7 @@ class User extends Model
         if (empty($token)) {
             echo json_encode(['code' => 2, 'msg' => '请求失败', 'data' => null]);exit;
         }
-        $tokenCheck = self::checkToken($token);
+        $tokenCheck = self::checkTokenFct($token);
         if ($tokenCheck != 0001) {
             echo json_encode(['code' => 2, 'msg' => 'token验证失败,请重新登录', 'data' => null]);exit;
         }
@@ -85,16 +85,19 @@ class User extends Model
         if (!empty($res)) {
             if ((time() - $res->time_out) > 0) {
                 echo json_encode(['code' => 2, 'msg' => 'token长时间未使用而过期，需重新登陆', 'data' => null]);exit;
+            }else{
+                $new_time_out = time()+3600;
+                $res->time_out = $new_time_out;
+                $res = $res->save();
+                if ($res) {
+                    return 0001;  //token验证成功，time_out刷新成功，可以获取接口信息
+                }else{
+                    return 0002;  //token错误验证失败
+                }
             }
         }
-        $new_time_out = time()+3600;
-        $res->time_out = $new_time_out;
-        $res = $res->save();
-        if ($res) {
-            return 0001;  //token验证成功，time_out刷新成功，可以获取接口信息
-        }else{
-            return 0002;  //token错误验证失败
-        }
+        echo json_encode(['code' => 404, 'msg' => '请先登陆', 'data' => null]);exit;
+
     }
 
     public static function header()

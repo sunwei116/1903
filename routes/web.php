@@ -95,8 +95,6 @@ Route::middleware(['apiheader'])->group(function(){
     Route::any('getregion_do','Index\UserController@getregion_do');//四级联动
     Route::any('region_do','Index\UserController@region_do');//四级联动
     Route::any('region_list','Index\UserController@region_list');//四级联动
-
-
 });
 
 

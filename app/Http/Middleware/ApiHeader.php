@@ -30,6 +30,7 @@ class ApiHeader
         header('content-type:application:json;charset=utf8');
         //  header("content-type:text/html;charset=utf-8");  //设置编码
         $token = $request->input('token');
+//        dd($token);
         User::checkToken($token);
 //        dd($token);
         // //获取客户端ip
