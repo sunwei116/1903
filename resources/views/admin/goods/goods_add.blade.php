@@ -103,7 +103,7 @@
                         'swf':'/js/uploadify/uploadify.swf',
                         'uploader':'/admin/up',
                         'onUploadSuccess':function(file,msg,data){
-                            $("input[name='goods_img']").html(msg);
+                            $("input[name='goods_img']").prop('value',msg);
                         }
                     });
 
