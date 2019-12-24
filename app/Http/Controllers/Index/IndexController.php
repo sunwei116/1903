@@ -13,9 +13,11 @@ use App\Model\Attr;
 
 class IndexController extends Controller
 {
+
     //前台登录
     public function login(Request $request)
     {
+        User::header();
         if(empty($_POST['user_name']) || empty($_POST['user_pwd'])) {
             echo json_encode(['code' => 2, 'msg' => '请输入账号和密码', 'data' => null]);exit;
 
@@ -31,16 +33,7 @@ class IndexController extends Controller
      */
     public function register()
     {
-        header('Access-Control-Allow-Origin:*');
-        // 响应类型
-        header('Access-Control-Allow-Methods:*');
-        //请求头
-        header('Access-Control-Allow-Headers:*');
-        // 响应头设置
-        header('Access-Control-Allow-Credentials:false');
-        //数据类型
-        header('content-type:application:json;charset=utf8');
-
+        User::header();
         $user_name = isset($_POST['user_name']) ? $_POST['user_name'] : '';
         $user_pwd = isset($_POST['user_pwd']) ? $_POST['user_pwd'] : '';
         $user_phone = isset($_POST['user_phone']) ? $_POST['user_phone'] : '';
@@ -89,6 +82,7 @@ class IndexController extends Controller
      */
     public  function category()
     {
+        User::header();
         $cateInfo=Category::get();
         Goods::json_success(1,'操作成功',$cateInfo);
 
@@ -96,23 +90,13 @@ class IndexController extends Controller
 
     public function category_goods_list(Request $request)
     {
-
+        User::header();
          $id=$request->get('category_id');
 
          $data=Goods::where('category_id',$id)->get();
          Goods::json_success('1','调用接口成功',$data);
     }
-    //加入购物车
-    public function add_car()
-    {
-        $goods_id = $_POST['goods_id'];
-        $goods_img = $_POST['goods_img'];
-        $goods_num = $_POST['goods_num'];
-        $goods_guige = $_POST['goods_guige'];
-        $token = $_POST['token'];
-        dd(\request()->input());
 
-    }
 
 
 

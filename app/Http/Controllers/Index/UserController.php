@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Model\Category;
 use App\Model\Address;
 use App\Model\Region;
+use App\IndexModel\User;
 
 class UserController extends Controller
 {
@@ -16,6 +17,7 @@ class UserController extends Controller
 	//分类展示接口
 	public function cate()
 	{
+        User::header();
 		$res = Category::get();
 		return json_encode(['ret'=>1,'res'=>$res]);
 	}
@@ -23,6 +25,7 @@ class UserController extends Controller
 	//四级联动
 	public function getregion()
 	{
+        User::header();
 		// $res = Region::get();
 		$res = Region::where(['parent_id'=>0])->get();
 		// dd($res);
@@ -32,6 +35,7 @@ class UserController extends Controller
 	//四级联动
 	public function getregion_do()
 	{
+        User::header();
 		$parent_id = request()->input('parent_id');
 		$res = Region::where(['parent_id'=>$parent_id])->get();
 		return json_encode(['ret'=>1,'res'=>$res]);
@@ -39,6 +43,7 @@ class UserController extends Controller
 
 
 	public function region_do(){
+        User::header();
 		$add_name = request()->input('add_name');
 		// dd($add_name);
 		$add_place = request()->input('add_place');
@@ -69,6 +74,7 @@ class UserController extends Controller
 	//地址列表接口
 	public function region_list()
 	{
+        User::header();
 		$data = array();
 		// $data = Address::get();
 		// dd($data);
@@ -90,7 +96,7 @@ class UserController extends Controller
 		// // return json_encode(['ret'=>1,'res'=>$res]);
 		// // return json_encode(['ret'=>2,'data'=>$data]);
 		// // return json_encode(['ret'=>3,'datas'=>$datas]);
-		
+
 		// $data['success']=true;
 		// $data=array(
 		// 	'data1'=>$res,
