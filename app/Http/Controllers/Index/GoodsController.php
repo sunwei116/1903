@@ -102,6 +102,39 @@ class GoodsController extends Controller
           
       }
 
+<<<<<<< Updated upstream
+=======
+      public function cart_list(Request $request)
+      {
+          $token=$request->get('token');
+          $userinfo=User::where('token',$token)->first()->toArray();
+          $user_id=$userinfo['user_id'];
+          $info=Cart::where('user_id',$user_id)->get();
+          Goods::json_success(1,'操作成功',$info); 
+      }
+
+
+      public function total(Request $request)
+      {
+          $token=$request->get('token');
+          $userinfo=User::where('token',$token)->first()->toArray();
+          $user_id=$userinfo['user_id'];
+          $info=Cart::where('user_id',$user_id)->get()->toArray();
+        
+          $money_total=0;
+          foreach($info as $k=>$v)
+          {
+             
+              $total=$v['market_price']*$v['goods_num'];
+              $info[$k]['total']=$total;
+              $money_total+=$total;
+          }
+          
+          Goods::json_success(1,'调用接口成功',$money_total);
+          
+      }
+
+>>>>>>> Stashed changes
     
 
 }
