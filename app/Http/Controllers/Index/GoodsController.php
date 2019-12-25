@@ -78,31 +78,8 @@ class GoodsController extends Controller
               }
             }
     
-      }
-use App\Http\Controllers\Controller;
-use App\Model\Goods;
-use App\Model\Images;
+        }
 
-class GoodsController extends Controller {
-	public function goods_show() {
-		$data = Goods::get();
-		$re = json_encode($data);
-		echo json_encode(['code' => 1, 'msg' => '调用成功', 'data' => $data]);
-	}
-
-	public function images_api() {
-		$data = Images::join('goods', 'img.goods_id', '=', 'goods.goods_id')->get()->toArray();
-		echo json_encode(['code' => 1, 'msg' => '调用成功', 'data' => $data]);
-	}
-
-      public function cart_list(Request $request)
-      {
-          $token=$request->get('token');
-          $userinfo=User::where('token',$token)->first()->toArray();
-          $user_id=$userinfo['user_id'];
-          $info=Cart::where('user_id',$user_id)->get();
-          Goods::json_success(1,'操作成功',$info); 
-      }
 
 
       public function total(Request $request)
