@@ -68,27 +68,31 @@ Route::any('admin/quit', 'Admin\UserController@quit'); //退出当前账号
 //前台
 Route::prefix('index')->group(function () {
 
-	Route::middleware(['apiheader'])->group(function () {
+Route::middleware(['apiheader'])->group(function(){
 
-		Route::any('cart_add', 'Index\GoodsController@cart_add'); //加入购物车
-	});
+    Route::any('cart_add', 'Index\GoodsController@cart_add');//加入购物车
+    Route::any('cart_list', 'Index\GoodsController@cart_list');//购物车列表
+    Route::any('total', 'Index\GoodsController@total');//购物车列表
+});
 
-	Route::any('register', 'Index\IndexController@register'); //注册
-	Route::any('login', 'Index\IndexController@login'); // 登录
-	Route::any('cate', 'Index\UserController@cate'); //分类展示
-	Route::any('get_goods_all', 'Index\IndexController@get_goods_all'); //获取所有商品
-	Route::any('getGoods', 'Index\IndexController@getGoods'); //获取所有商品
-	Route::any('goods_show', 'Index\GoodsController@goods_show'); // 商品接口
-	Route::any('images_api', 'Index\GoodsController@images_api'); // 轮播图接口
-	Route::any('goods_desc', 'Index\IndexController@goods_desc'); //  商品详情
-	Route::any('get_goods_imgs', 'Index\IndexController@get_goods_imgs'); //  商品轮播图
-	Route::any('get_goods_attr', 'Index\IndexController@get_goods_attr'); //  商品属性
-	Route::any('add_car', 'Index\IndexController@add_car'); //加入购物车
-
-	Route::any('category', 'Index\IndexController@category'); // 分类接口
-	Route::any('category_goods_list', 'Index\IndexController@category_goods_list'); // 分类下面所有的商品
-	Route::any('getregion', 'Index\UserController@getregion'); //四级联动
-	Route::any('getregion_do', 'Index\UserController@getregion_do'); //四级联动
-	Route::any('region_do', 'Index\UserController@region_do'); //四级联动
-	Route::any('region_list', 'Index\UserController@region_list'); //四级联动
+    Route::any('register', 'Index\IndexController@register');  //注册
+    Route::any('login', 'Index\IndexController@login');  // 登录
+    Route::any('cate','Index\UserController@cate');//分类展示
+    Route::any('get_goods_all','Index\IndexController@get_goods_all');//获取所有商品
+    Route::any('getGoods','Index\IndexController@getGoods');   //获取所有商品
+    Route::any('getGoods','Index\IndexController@getGoods');//获取所有商品
+    Route::any('goods_show', 'Index\GoodsController@goods_show');  // 商品接口
+    Route::any('images_api', 'Index\GoodsController@images_api');  // 轮播图接口
+    Route::any('goods_desc', 'Index\IndexController@goods_desc');  //  商品详情
+    Route::any('get_goods_imgs', 'Index\IndexController@get_goods_imgs');  //  商品轮播图
+    Route::any('get_goods_attr', 'Index\IndexController@get_goods_attr');  //  商品属性
+    Route::any('login', 'Index\IndexController@login');  //
+    Route::any('goods_show', 'Index\GoodsController@goods_show');   // 商品接口
+    Route::any('images_api', 'Index\GoodsController@images_api');  // 轮播图接口
+    Route::any('category', 'Index\IndexController@category');   // 分类接口
+    Route::any('category_goods_list', 'Index\IndexController@category_goods_list');   // 分类下面所有的商品
+    Route::any('getregion','Index\UserController@getregion');//四级联动
+    Route::any('getregion_do','Index\UserController@getregion_do');//四级联动
+    Route::any('region_do','Index\UserController@region_do');//四级联动
+    Route::any('region_list','Index\UserController@region_list');//四级联动
 });

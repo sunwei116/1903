@@ -120,6 +120,7 @@ class GoodsController extends Controller
         //dd($data);
         return view('admin.goods.images_show',compact('data'));
     }
+    
 
 
 
